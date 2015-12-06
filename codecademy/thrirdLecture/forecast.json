@@ -1,0 +1,36 @@
+{
+  "city_name": "Moravsky Krumlov",
+  "country": "CZ",
+  "days": [
+    {
+      "datetime": 1440090800000,
+      "icon": "img/sun.jpg",
+      "high": 68,
+      "low": 37
+    },
+    {
+      "datetime": 1440190800000,
+      "icon": "img/clouds.jpg",
+      "high": 68,
+      "low": 37
+    },
+    {
+      "datetime": 1440290800000,
+      "icon": "img/rain.jpg",
+      "high": 46,
+      "low": 14
+    },
+    {
+      "datetime": 1440390800000,
+      "icon": "img/clouds.jpg",
+      "high": 46,
+      "low": 28
+    },
+    {
+      "datetime": 1440490800000,
+      "icon": "img/sun.jpg",
+      "high": 59,
+      "low": 32
+    }
+  ]
+}
