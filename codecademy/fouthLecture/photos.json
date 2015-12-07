@@ -1,0 +1,44 @@
+[
+  {
+    "country": "Australia",
+    "author": "David Sajdl",
+    "url": "https://raw.githubusercontent.com/dsajdl01/AngularJS_practice/master/codecademy/fouthLecture/img/airle_beach.jpg",
+    "place": "Airle Beach",
+    "views": 1195
+  },
+  {
+    "country": "Cambodia",
+    "author": "David Sajdl",
+    "url": "https://raw.githubusercontent.com/dsajdl01/AngularJS_practice/master/codecademy/fouthLecture/img/angkor_wat.jpg",
+    "place": "Angkor Wat",
+    "views": 1266
+  },
+  {
+    "country": "Colombie",
+    "author": "David Sajdl",
+    "url": "https://raw.githubusercontent.com/dsajdl01/AngularJS_practice/master/codecademy/fouthLecture/img/lost_city.jpg",
+    "place": "Lost City",
+    "views": 3048
+  },
+  {
+    "country": "Czech Republic",
+    "author": "David Sajdl",
+    "url": "https://raw.githubusercontent.com/dsajdl01/AngularJS_practice/master/codecademy/fouthLecture/img/trstenice.jpg",
+    "place": "Trstenice",
+    "views": 1193
+  },
+  {
+    "country": "Ecuador",
+    "author": "David Sajdl",
+    "url": "https://raw.githubusercontent.com/dsajdl01/AngularJS_practice/master/codecademy/fouthLecture/img/vilcabamba.jpg",
+    "place": "Vilcabamba",
+    "views": 1283
+  },
+  {
+    "country": "Columbia",
+    "author": "David Sajdl",
+    "url": "https://raw.githubusercontent.com/dsajdl01/AngularJS_practice/master/codecademy/fouthLecture/img/panachi.jpg",
+    "place": "Park Chimonachi",
+    "views": 1139
+  }
+]
