@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+	<head>
+		<title>Notes</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<style type="text/css">
+			.done {
+				background-color: green;
+				border-bottom: 1px solid #000;
+			}
+			.pending {
+				background-color: red;
+				border-bottom: 1px solid #000;
+			}
+			/*table, */ 
+			td{
+				border: 1px solid #000;
+			}
+		</style>  
+	</head>
+	<body ng-controller="MainCtrl as ctrl">
+				<br><br><br>
+				{{ ctrl.message }} AngularJS.
+
+				<button ng-click="ctrl.changeMessage()">Chenge Message</button>
+				<br><br>
+				<hr>
+				<br>
+				<div ng-repeat="note in ctrl.notes"> 
+					<span class="id"> {{ note.id }}. </span>
+					<span class="lable"> {{ note.lable }} </span>
+					<span class="status" ng-bind ="note.done"> </span>
+				</div> 
+				<br><br>
+				<hr>
+				<br>
+				<div ng-repeat="note in ctrl.notes" ng-class="ctrl.getNoteClass(note.done)"> 
+					<span class="id"> {{ note.id }}. </span>
+					<span class="lable"> {{ note.lable }} </span>
+					<span class="assignee"
+					 			ng-show="note.assignee"
+					 			ng-bind="note.assignee"> 
+					</span>
+				</div> 
+				<br><br>
+				<hr>
+				<br>
+				<div ng-repeat="note in ctrl.notes">
+					<div>First Element: {{$first}}</div>
+					<div>Middle Element: {{$middle}}</div>
+					<div>LastElement: {{$last}}</div>
+					<div>Index of Element: {{$index}}</div>
+					<div>At Even Position: {{$even}}</div>
+					<div>At odd Position: {{$odd}}</div>
+
+					<span class="lable"> {{ note.lable }} </span>
+					<span class="status" ng-bind ="note.done"> </span>
+					<br><br>
+				</div>
+				<br><br>
+				<hr>
+				<br>
+				<h2>Using Table</h2>
+				<table>
+					<tr ng-repeat-start="note in ctrl.notes">
+						<td>{{ note.id }}</td>
+						<!--td>{{ note.lable }}</td-->
+					</tr>
+					<tr ng-repeat-end>
+						<td>Done: {{ note.done }}</td>
+					</tr>
+				</table>
+				<script type="text/javascript">
+				angular.module('notesApp', [])
+					.controller('MainCtrl', [function() {
+						var self = this;
+						self.message = 'Hello ';
+						var count = 1;
+						self.changeMessage = function(){
+							if(count == 1){
+								self.message = 'Welcome to ';
+								count = 2;
+							} else {
+								self.message = 'Goodbye';
+								count = 1;
+							}
+						};
+						self.notes = [
+								{id: 1, lable: 'First Note', done: false, assignee: 'Shyam'},
+								{id: 2, lable: 'Second Note', done: false},
+								{id: 3, lable: 'Done Note', done: true},
+								{id: 4, lable: 'Last Note', done: false, assignee: 'Bred'}
+						];
+
+						self.getNoteClass = function(status){
+							return { 	done: status,
+								   		pending: !status
+								    }
+						};
+					}]);
+				</script>
+ 	</body>
+</html>
