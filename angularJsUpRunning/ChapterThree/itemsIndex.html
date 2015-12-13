@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+	<head>
+		<title>Notes</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-mocks.js"></script>
+	</head>
+	<body ng-controller="ListCtrl as ctrl">
+
+		<div ng-repeat="item in ctrl.items">
+				<span>{{ item }}</span>
+				<span class="status" ng-bind ="item.done"> </span>
+		</div>
+		<script src="controller.js">
+		</script>
+	</body>
+</html>
