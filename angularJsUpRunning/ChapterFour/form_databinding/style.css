@@ -1,0 +1,46 @@
+.mail.ng-valid,
+.pwd.ng-valid,
+.uname.ng-valid
+{
+	background-color: lightgreen;
+}
+.validMessage
+{
+	color: green;
+}
+
+.mail.ng-dirty.ng-invalid-required,
+.pwd.ng-dirty.ng-invalid-required,
+.uname.ng-dirty.ng-invalid-required
+{
+	background-color: red;
+}
+
+.pwd.ng-dirty.ng-invalid-minlength,
+.uname.ng-dirty.ng-invalid-minlength
+{
+	background-color: lightpink;
+}
+
+.mail.ng-invalid-required,
+.pwd.ng-invalid-required, 
+.uname.ng-invalid-required
+{
+	background-color: #ffe5e5;
+}
+
+.errorMessage
+{
+	color: red;
+	font-style: italic;
+	font-size: 85%;
+
+}
+
+.mainErrorMessage
+{
+	color: red;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 105%;
+}
