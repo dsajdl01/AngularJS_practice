@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="formApp">
+<head>
+	<title>Notes App</title>
+</head>
+	<body ng-controller="formList as ctrl">
+		<h1>Nested Form</h1>
+		<br>
+		<h3>Getting two object from in form</h3>
+		<form novalidate name="myForm" ng-submit="ctrl.submit()" >
+			<label>Username:</label>
+			<input 	type="text"
+					class="uname"
+					required=""
+					placeholder="Username"
+					ng-model="ctrl.user.user.username"
+					ng-minlength="4" />
+			<br>
+			<label>Password:</label>
+			<input	type="password"
+					class="password"
+					name="pwd"
+					ng-model="ctrl.user.user.password"
+					placeholder="Password"
+					requered="" />
+			<br><br>
+			<ng-form name="profile">
+				<label>First name:</label>
+				<input type="text"
+						name="firstname"
+						ng-model="ctrl.user.profile.firstName"
+						placeholder="First name"
+						required>
+				<br>
+				<label>Middle Name:</label>
+				<input 	type="text"
+						name="middleName"
+						placeholder="Middle Name"
+						ng-model="ctrl.user.profile.middleName">
+				<br>
+				<label>Last Name:</label>
+				<input type="text"
+						name="lastName".
+						placeholder="Last Name"
+						ng-model="ctrl.user.profile.lastName"
+						required>
+				<br>
+				<label>Date Of Bitrh:</label>
+				<input 	type="date"
+						name="dob"
+						placeholder="Date Of Birth"
+						ng-model="ctrl.user.profile.dob">
+			</ng-form>
+			<span ng-show="myForm.profile.$invalid">
+				Please fill out profile information
+			</span>
+			<br>
+			<input type="submit"
+				   value="Submit"
+				   ng-disabled="myForm.$invalid" />
+		<form>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+			<script type="text/javascript">
+				angular.module('formApp', [])
+					.controller('formList', [function() {
+							var self = this;
+							self.submit = function(){
+								console.log("in profile:", self.user.profile );
+								console.log('in user: ', self.user.user );
+								console.log("in both:", self.user );
+							};
+					}]);
+			</script>
+	</body>
+</html>
