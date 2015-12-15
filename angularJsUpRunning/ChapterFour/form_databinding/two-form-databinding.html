@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+	<head>
+		<title>Notes - Two form databinding App</title>
+		<link href="style.css" rel="stylesheet" media="all" />
+	</head>
+	<body ng-controller="MainCtrl as ctrl">
+		<h1> Two Form by Using AngularJS &#38; Validation </h1>
+			<form ng-submit="ctrl.submit1()" name="myMemberForm">
+				<label>User:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</label>
+				<input 	type="text" 
+						class="uname"
+						ng-model="ctrl.user.username"
+						name="userName"
+						ng-minlength="4"
+						required>  
+						<span class="errorMessage" ng-show="myMemberForm.userName.$error.minlength">Minimum 4 characters</span>
+						<span class="errorMessage" ng-show="myMemberForm.userName.$error.required">User name is required</span>
+						<span class="validMessage" ng-show="myMemberForm.userName.$valid">&#160; &#10004;</span>
+				<br>
+				<label>E-mail:&#160;&#160;&#160;&#160;&#160;</label>
+				<input 	type="email"
+						class= "mail" 
+						ng-model="ctrl.user.useremail"
+						name="userEmail"
+						required /> 
+						<span class="errorMessage" ng-show="myMemberForm.userEmail.$error.required">Valid email is required</span>
+						<span class="errorMessage" ng-show="myMemberForm.userEmail.$error.email">Invalid email address.</span>
+						<span class="validMessage" ng-show="myMemberForm.userEmail.$valid">&#160; &#10004;</span>
+				<br>
+				<label>Password:</label>
+				<input 	type="password"
+						class="pwd" 
+						name="passWord" 
+					   	ng-model="ctrl.user.password"
+						ng-minlength="6"
+						required >
+						<span class="errorMessage" ng-show="myMemberForm.passWord.$error.minlength">Minimum 6 characters</span>
+						<span class="errorMessage" ng-show="myMemberForm.passWord.$error.required">Password is required</span>
+						<span class="validMessage" ng-show="myMemberForm.passWord.$valid" >&#160; &#10004;</span>
+				<br>
+				<input type="submit" value="Submit" ng-disabled="myMemberForm.$invalid" >
+				<p class="mainErrorMessage" ng-show="myMemberForm.$invalid" >
+						You need at least 4 characters in username , 6 characters in password and valid e-mail address to submit User form </p>
+			</form>
+			<br>
+			<hr>
+			<br>
+ 			<form ng-submit="ctrl.submit2()">
+				<label>Member:&#160;&#160;</label>
+				<input type="text" ng-model="ctrl.username">
+				<br>
+				<label>Password:</label>
+				<input type="password" ng-model="ctrl.password">
+				<br>
+				<input type="submit" value="Submit">
+			</form> 
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+			<script type="text/javascript">
+				angular.module('notesApp', [])
+					.controller('MainCtrl', [function() {
+
+						var self = this;
+						self.submit2 = function(){
+							// it needs to create member object to send to the server
+							var member = { username: self.username, password: self.password};
+							console.log('First form: Member clicked submit with ', member); 
+						};
+						self.submit1 = function(){
+							console.log('Second form: User clicked submit with ', self.user);
+						};
+
+					}]);
+			</script>
+	</body>
+</html>
