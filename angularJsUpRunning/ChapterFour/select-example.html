@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="countryApp">
+<head>
+	<title>Country</title>
+</head>
+	<body ng-controller="countryController as ctrl">
+		<h1>Countries</h1>
+		<div>
+			<select ng-model="ctrl.selectedCountryId"
+				ng-options="c.id as c.label for c in ctrl.countries">
+			</select>
+			Selected Country ID: {{ ctrl.selectedCountryId }}
+		</div>
+		<br>
+		<hr>
+		<br>
+		<div>
+			<select ng-model="ctrl.selectedCountry"
+				ng-options="c.label for c in ctrl.countries">
+			</select>
+			<br>
+			<br>
+			Selected Country: {{ ctrl.selectedCountry.label }}
+			<div ng-show='ctrl.selectedCountry.id != 0'>
+				<h3> Select City or Currency </h3>
+				<div >
+					<label>City: </label>
+					<input type="radio"
+							name="cntrValue"
+							ng-model="cntrValue"
+							value="city">
+					<label>Currency: </label>
+					<input type="radio"
+							name="cntrValue"
+							ng-model="cntrValue"
+							value="currency">
+					<span ng-show='cntrValue === "city"'>
+						<p> Capital city of {{ ctrl.selectedCountry.label }} is: {{ ctrl.selectedCountry.city }}</p>
+					</span>
+					<span ng-show='cntrValue === "currency"'>
+						<p>Currency of the state {{ ctrl.selectedCountry.label }} is  {{ ctrl.selectedCountry.currency }}</p>
+					</span>
+				</div>
+			</div>
+		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script type="text/javascript">
+			angular.module('countryApp', [])
+				.controller('countryController', [function() {
+					var self = this;
+					self.countries = [
+						{label: 'Select Country', id: 0},
+						{label: 'USA', id: 1, city: 'Washington DC', currency: 'USD-Dollar'},
+						{label: 'Czech', id: 2, city: 'Prague', currency: 'CZK-Crown' },
+						{label: 'Canada', id: 3, city: 'Ottawa', currency: 'CAD-Dollar'}
+					];
+					self.selectedCountryId = 0;
+					self.selectedCountry = self.countries[0];
+				}]);
+				
+		</script>
+	</body>
+</html>
