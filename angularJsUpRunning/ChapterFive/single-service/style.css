@@ -1,0 +1,43 @@
+body
+{
+	width: 80%;
+	margin-left: 10%;
+}
+.firstDiv
+{
+	background-color: lightgreen;
+	border: 1px solid #000;
+}
+.secondDiv
+{
+	background-color: lightpink;
+	border: 1px solid #000;
+}
+ul
+{
+    width: 10em;
+}
+.right
+{
+	float: right;
+}
+h1
+{
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+}
+h3
+{
+	color: red;
+	padding-left: 25px;
+}
+button
+{
+	margin-bottom: 15px;
+} 
+button.btn_right
+{
+	margin-bottom: 20px;
+	margin-left: 130px;	
+}
