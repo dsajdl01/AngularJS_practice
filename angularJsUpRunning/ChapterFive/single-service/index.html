@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<title>AngularJS - Single Service</title>
+	<link href="style.css" rel="stylesheet" media="all" />
+</head>
+	<body ng-controller="singleController as ctrl">
+		<h1>Hello From Controller!</h1>
+		<button ng-click="ctrl.open('first')">Open First</button> &#160;&#160;&#160;
+		<button ng-click="ctrl.open('second')">Open Second</button>
+		<div ng-switch on="ctrl.tab">
+			
+			<div class="firstDiv" ng-switch-when="first">
+				<div ng-controller="subController as subctrl">
+					<h3>First tab</h3>
+					<ul>
+						<li ng-repeat="item in subctrl.list()">
+							<span>{{ item.id }}</span>
+							<span class="right" ng-bind="item.label"></span>
+						</li>
+					</ul>
+					<button class="btn_right" ng-click="subctrl.add()"> Add More Items</button>
+				</div>
+			</div>
+
+			<div class="secondDiv" ng-switch-when="second">
+				<div ng-controller="subController as subctrl">
+					<h3>Second tab</h3>
+					<ul>
+						<li ng-repeat="item in subctrl.list()">
+							<span>{{ item.id }}</span>
+							<span class="right" ng-bind="item.label"></span>
+						</li>
+					</ul>
+					<button class="btn_right" ng-click="subctrl.add()">Add More Items</button>
+				</div>
+			</div>
+
+		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>
