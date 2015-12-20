@@ -1,0 +1,38 @@
+[
+	{
+		"id": 0,
+		"label": "black",
+		"htmlCode": "#000000",
+		"author": "David Sajdl"
+	},
+	{
+		"id": 1,
+		"label": "white",
+		"htmlCode": "#ffffff",
+		"author": "David Sajdl"
+	},
+	{
+		"id": 2,
+		"label": "red",
+		"htmlCode": "#ff0000",
+		"author": "David Sajdl"
+	},
+	{
+		"id": 3,
+		"label": "green",
+		"htmlCode": "#00a600",
+		"author": "David Sajdl"
+	},
+	{
+		"id": 4,
+		"label": "blue",
+		"htmlCode": "#0000ff",
+		"author": "David Sajdl"
+	},
+	{
+		"id": 5,
+		"label": "yellow",
+		"htmlCode": "#ffff00",
+		"author": "David Sajdl"
+	}
+]
