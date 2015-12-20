@@ -1,5 +1,5 @@
 angular.module('notesApp', [])
-	.controller('singleController', [ function(){
+	.controller('singleController', [function(){
 		var self = this;
 		self.tab = 'first';
 		self.open = function(tab){
@@ -17,7 +17,9 @@ angular.module('notesApp', [])
 				id: self.list().length + 1,
 				label: 'Item - ' + self.list().length
 			});
+			self.getLength = ItemService.len();
 		};
+		self.getLength = ItemService.len();
 	}])
 	.factory('ItemService', [function(){
 		var items = [
@@ -30,6 +32,9 @@ angular.module('notesApp', [])
 				},
 				add: function(item) {
 					items.push(item);
+				},
+				len: function(){
+					return items.length
 				}
 		};
 	}]);
