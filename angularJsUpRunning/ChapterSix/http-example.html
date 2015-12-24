@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="getHttpApp">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>HTTP - Get Example</title> 
+		<link href="style-http-example.css" rel="stylesheet" media="all" />
+	</head>
+
+	<body ng-controller="mainController as ctrl">
+
+		<div class="mainContainer">
+
+			<h1>Hello From Server by Using &#39;GET&#39;</h1>
+
+			<p> {{ ctrl.text | capitalize }}</p>
+			<div ng-repeat="itm in ctrl.items" ng-class="itm.label">
+					<h3> {{ itm.label | capitalize }} </h3>
+					<h5> Colour's HTML code - {{ itm.htmlCode }}</h5>
+					<div class="author"> - by <span ng-bind="itm.author"></span></div>
+			</div>
+
+		</div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="app.js"></script>
+		<script src="colourController.js"></script>
+		<script src="colourFilter.js"></script>
+
+	</body>
+</html>
