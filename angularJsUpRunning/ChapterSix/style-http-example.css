@@ -1,0 +1,54 @@
+.mainContainer {
+	width: 80%;
+	margin-left: 10%;
+	padding: 10px;
+	border: 1px solid #030303;
+}
+.red {
+	background-color: #ff0000;
+	color:  #00a600; 
+	margin-bottom: 15px;
+	border: 1px solid #00a600;
+	padding: 0px 20px;
+}
+.white {
+	background-color: #ffffff;
+	color: #000000;
+	margin-bottom: 15px;
+	border: 1px solid #000000;
+	padding: 0px 20px;
+}
+.black {
+	background-color: #000000;
+	color: #ffffff;
+	margin-bottom: 15px;
+	border: 1px solid #ffffff;
+	padding: 0px 20px;	
+}
+.green {
+	background-color: #00a600;
+	color: #ff0000;
+	margin-bottom: 15px;
+	border: 1px solid #ff0000;
+	padding: 0px 20px;
+}
+.yellow {
+	background-color: #ffff00;
+	color: #800080;
+	margin-bottom: 15px;
+	border: 1px solid #800080;
+	padding: 0px 20px;
+}
+.blue {
+	background-color: #0000ff;
+	color: #ffa500;
+	margin-bottom: 15px;
+	border: 1px solid #ffa500;
+	padding: 0px 20px;
+}
+.author {
+	float: right;
+	font-size: 80%;
+	margin-right: 15px;
+	margin-top: -40px;
+}
