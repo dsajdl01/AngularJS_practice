@@ -11,6 +11,15 @@
 
 		<button type="button" ng-disabled="ctrl.process" ng-click="ctrl.showModal()" title="{{ ctrl.btnName }}" > {{ ctrl.btnName }} </button>
 
+		<div class="content" ng-show="ctrl.showContent">
+			<p>I can see now</p>
+			<div ng-repeat="itm in ctrl.items" ng-class="itm.label">
+					<h3> {{ itm.label}} </h3>
+					<h5> Colour's HTML code - {{ itm.htmlCode }}</h5>
+					<div class="author"> - by <span ng-bind="itm.author"></span></div>
+			</div>
+		</div>
+
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.3.6/angular-strap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.3.6/angular-strap.tpl.min.js"></script>
@@ -19,6 +28,5 @@
 		<script src="js/app.js"></script>
 		<script src="js/controller/exampleController.js"></script>
 		<script src="js/service/loadDataService.js"></script>
-		
 	</body>
 </html>
