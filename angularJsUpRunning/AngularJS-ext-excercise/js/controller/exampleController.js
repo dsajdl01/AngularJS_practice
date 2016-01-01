@@ -1,6 +1,6 @@
 
-myExampleApp.controller('exampleController', [ '$scope', '$modal', 'loadDataService',
-									  function($scope, $modal, loadDataService) {
+myExampleApp.controller('exampleController', [ '$scope', '$modal', '$window', 'loadDataService',
+									  function($scope, $modal, $window, loadDataService) {
   	var self = this;
   	self.showText = "Press button to show HTML colour code.";
   	self.btnName = "Display data";
@@ -32,5 +32,10 @@ myExampleApp.controller('exampleController', [ '$scope', '$modal', 'loadDataServ
 		});
 
 			
-	};	
+	};
+
+	self.reloadPage = function(){
+		console.log('refrash button is pressed');
+		$window.location.reload();
+	}	
 }]);
