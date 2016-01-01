@@ -9,32 +9,37 @@
     <link href="css/style.css" rel="stylesheet" media="all" />
 </head>
 	<body ng-controller="exampleController as ctrl">
-		<div class="mainContainer">
-			<h1>Testing AngularJS</h1>
-			<p> {{ ctrl.showText }} </p>
+	<div class="mainContainer">
+		<h1>Testing AngularJS</h1>
+		<p> {{ ctrl.showText }} </p>
 
+		<button type="button" ng-disabled="ctrl.process" ng-click="ctrl.showModal()" title="{{ ctrl.btnName }}" > {{ ctrl.btnName }} </button>
+		<div class="content" ng-show="ctrl.showContent">
+			<div class="colorContent">
+					<div class="subContainer">
+							<div class="color-left"> 
+								<div ng-repeat="itm in ctrl.items" ng-class="itm.label" ng-if=" itm.id < 3">
+										<h3> {{ itm.label}}</h3>
+										<h5> Colour's HTML code - {{ itm.htmlCode }}</h5>
+										<div class="author"> - by <span ng-bind="itm.author"></span></div>
+								</div>
+							</div>
 
-			<button type="button" ng-disabled="ctrl.process" ng-click="ctrl.showModal()" title="{{ ctrl.btnName }}" > {{ ctrl.btnName }} </button>
-
-			<div class="content" ng-show="ctrl.showContent">
-				<div class="colorContent">
-					<div class="color-left"> 
-						<div ng-repeat="itm in ctrl.items" ng-class="itm.label" ng-if=" itm.id < 3">
-								<h3> {{ itm.label}}</h3>
-								<h5> Colour's HTML code - {{ itm.htmlCode }}</h5>
-								<div class="author"> - by <span ng-bind="itm.author"></span></div>
-						</div>
+							<div class="color-right">
+								<div ng-repeat="itm in ctrl.items" ng-class="itm.label" ng-if=" itm.id >= 3" >
+										<h3> {{ itm.label}} </h3>
+										<h5> Colour's HTML code - {{ itm.htmlCode }}</h5>
+										<div class="author"> - by <span ng-bind="itm.author"></span></div>
+								</div>
+							</div>
 					</div>
-					<div class="color-right">
-						<div ng-repeat="itm in ctrl.items" ng-class="itm.label" ng-if=" itm.id >= 3" >
-								<h3> {{ itm.label}} </h3>
-								<h5> Colour's HTML code - {{ itm.htmlCode }}</h5>
-								<div class="author"> - by <span ng-bind="itm.author"></span></div>
-						</div>
-					</div>
-				</div>
+				<button type="button" class="btnRefresh" ng-click="ctrl.reloadPage()" title="Refresh"> Refrash </button>
 			</div>
 		</div>
+		<div class="footer">
+			<p class= "webAuthor">Created by &#169; Daid Sajdl 2016</p>
+		</div>
+	</div>
 
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.3.6/angular-strap.min.js"></script>
