@@ -2,7 +2,7 @@
 myExampleApp.controller('exampleController', [ '$scope', '$modal', 'loadDataService',
 									  function($scope, $modal, loadDataService) {
   	var self = this;
-  	self.showMe = "Hello David";
+  	self.showText = "Press button to show HTML colour code.";
   	self.btnName = "Display data";
   	self.process = false;
   	self.showContent = false;
@@ -25,6 +25,7 @@ myExampleApp.controller('exampleController', [ '$scope', '$modal', 'loadDataServ
 					self.btnName = 'Done';
 					self.myModal.$promise.then(self.myModal.hide);
 					self.showContent = true;
+					self.process = true;
 					self.items = data;
 					console.log(200, 'success');
 				}
