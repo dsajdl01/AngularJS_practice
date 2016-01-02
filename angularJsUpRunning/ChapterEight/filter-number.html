@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="filterApp">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>Filters in Action</title>
+	</head>
+	<body ng-controller="filterCtrl as ctrl">
+		<h1>Filters Application Using AngularJS</h1>
+		<br>
+		<h5>Numbers:</h5>
+		<ul>
+			<li>
+				Amout without any filter: {{ ctrl.amount }}
+			</li>
+			<li>
+				Amount using default currency: {{ ctrl.amount | currency }} 
+			</li>
+			<li>
+				Amount using currency: {{ ctrl.amount | currency:'&#163'}} 
+			</li>
+			<li>
+				Amount using number: {{ ctrl.amount | number }}
+			</li>
+			<li>
+				Amount using number 4 decimal: {{ ctrl.amount | number: 4}}
+			</li>
+		</ul>
+		<h5>String name:</h5>
+		<ul>
+			<li>
+				Name without any filter: {{ ctrl.name }}
+			</li>
+			<li>
+				Name lowercase filter: {{ ctrl.name | lowercase }}
+			</li>
+			<li>
+				Name uppercase filter: {{ ctrl.name | uppercase }}
+			</li>
+		</ul>
+		<h5>JSON</h5>
+		<ul>
+			<li>
+				Without filter: {{ ctrl.obj}}
+			</li>
+			<li>
+				The JSON Filter: {{ ctrl.obj | json }}	
+			</li>
+		</ul>
+		<h5>Time & Day</h5>
+		<ul>
+			<li>
+				Timestamp or without filter: {{ ctrl.startTime }}
+			</li>
+			<li>
+				Default time filter: {{ ctrl.startTime | date }}
+			</li>
+			<li>
+				Medium Date Filter: {{ ctrl.startTime | date:'medium' }}
+			</li>
+			<li>
+				Custom Date Filter: {{ ctrl.startTime | date:'M/dd, yyyy' }} 
+			</li>
+			<li>
+				Custom Date Filter: {{ ctrl.startTime | date:'yyyy/dd/M' }} 
+			</li>
+		</ul>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="filter-number.js">
+		</script>
+	</body>
+</html>
