@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="filterArrayApp">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>Filter in Array</title>
+	</head>
+	<body ng-controller="filterArrayCtrl as ctrl">
+	<div >
+		<button ng-click="ctrl.currentFilter = 'string'"> Filter with String</button>
+		<button ng-click="ctrl.currentFilter = 'function'"> Filter with Function</button>
+		Filter text
+		<input type="text" ng-model="ctrl.filterOptions['string']">
+		Show Done Only
+		<input type="checkbox" ng-model="ctrl.filterOptions['object'].done">
+		<ul>
+			<li ng-repeat="note in ctrl.notes | filter:ctrl.filterOptions[ctrl.currentFilter] | orderBy:ctrl.sortOrder | limitTo:5">
+				{{ note.label }} - {{ note.type }} - {{ note.done }}
+		</li>
+		</ul>
+	</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="filter-array.js" ></script>
+	</body>
+</html>
