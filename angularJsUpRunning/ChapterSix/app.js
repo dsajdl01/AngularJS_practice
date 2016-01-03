@@ -1,1 +1,1 @@
-var app = angular.module('getHttpApp', []);
+var getHttpApp = angular.module('getHttpApp', []);
