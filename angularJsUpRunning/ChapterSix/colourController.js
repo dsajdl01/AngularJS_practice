@@ -1,4 +1,4 @@
-app.controller('mainController', ['$http', function($http) {
+getHttpApp.controller('mainController', ['$http', function($http) {
 	var self = this;
 	self.text = 'getting data from http server'
 	self.items = [];
