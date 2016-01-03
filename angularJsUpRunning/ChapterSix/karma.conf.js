@@ -12,7 +12,8 @@ module.exports = function(config) {
 			'app.js',
 			'colourController.js',
 			'colourControllerSpec.js',
-			'colourFilter.js'
+			'colourFilter.js',
+			'colourFilterSpec.js'
 		],
 
 		// list of file / patterns to exclude
