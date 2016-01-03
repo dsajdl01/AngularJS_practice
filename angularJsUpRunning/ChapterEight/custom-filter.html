@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myFilterApp">
+<head>
+	<title>Custom - my Filter App</title>
+</head>
+	<body ng-controller="myFilterCtrl as ctrl">
+			{{ ctrl.bodys }}
+ 		<div>
+			Start Time (Timestemp): {{ ctrl.startTime }}
+		</div>
+		<div>
+			Start Time (DayTime): {{ ctrl.startTime | date:'medium' }}
+		</div> 
+
+		<div>
+			Start Time-short: {{ ctrl.startTime | date:'short' }}
+		</div>
+
+ 		<div>
+			Start Time (my Filter): {{ ctrl.startTime | timeAgo }}
+		</div>
+		<br>
+		<hr>
+		<div>
+			someTimeAgo (defalt): {{ ctrl.someTimeAgo }}
+		</div>
+		<div>
+			someTimeAgo (DayTime): {{ ctrl.someTimeAgo | date:'medium' }}
+		</div> 
+		<div>
+			someTimeAgo: {{ ctrl.someTimeAgo | date:'short' }}
+		</div>
+ 		<div>
+			some Time Ago: {{ ctrl.someTimeAgo | timeAgo }}
+		</div> 
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="custom-filter.js"></script>
+	</body>
+</html> 
