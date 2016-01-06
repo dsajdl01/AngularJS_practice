@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<title>FIFA TEAMs Ecample</title>
+</head>
+	<body ng-app="fifaApp">
+		<div class="topBar" ng-controller="mainController as mainCtrl">
+				<div class="pullLeft">
+					<span ng-hide="mainCtrl.userService.isLoggedIn">
+						<a href="#/login">Login</a>
+					</span>
+					<span ng-show="mainCtrl.userService.isLoggedIn">
+						<a href="/ap/logout">Logout</a>
+					</span>
+				</div>	
+		</div>
+		<div ng-view></div>
+		<script src="script/vendors/angular.js"></script>
+		<script src="script/vendors/angular-min.js"></script>
+		<script src="script/vendors/angular-route.js"></script>
+
+		<script src="script/app.js"></script>
+		<script src="script/service.js"></script>
+		<script src="script/controller.js"></script>
+	</body>
+</html>
