@@ -5,9 +5,13 @@
 	<meta content="utf-8" http-equiv="encoding">
 	<title>FIFA TEAMs Ecample</title>
 </head>
-	<body ng-app="fifaApp">
+	<body ng-app="fifaApp" class="landing">
 		<div class="topBar" ng-controller="mainController as mainCtrl">
 				<div class="pullLeft">
+					<span><a href="#/">FIFA TEAMS </a></span>
+				</div>
+
+				<div class="pullRight">
 					<span ng-hide="mainCtrl.userService.isLoggedIn">
 						<a href="#/login">Login</a>
 					</span>
@@ -18,11 +22,16 @@
 		</div>
 		<div ng-view></div>
 		<script src="script/vendors/angular.js"></script>
-		<script src="script/vendors/angular-min.js"></script>
+	<!-- 	<script src="script/vendors/angular-min.js"></script> -->
 		<script src="script/vendors/angular-route.js"></script>
 
 		<script src="script/app.js"></script>
-		<script src="script/service.js"></script>
-		<script src="script/controller.js"></script>
+		<script src="config/config.js"></script>
+		<script src="script/services/fifaService.js"></script>
+		<script src="script/services/userService.js"></script>
+		<script src="script/controller/controller.js"></script>
+		<script src="script/controller/loginController.js"></script>
+		<script src="script/controller/teamDetailsController.js"></script>
+		<script src="script/controller/teamListController.js"></script>
 	</body>
 </html>
