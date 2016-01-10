@@ -5,7 +5,7 @@ fifaApp.controller('LoginCtrl',['UserService', '$location', function(UserService
 	
 	self.login = function() {
 		UserService.login(self.user).then(function(success){
-			$location.path('/team');
+			$location.path('/');
 		}, 
 		function(error){
 			self.errorMessage = error.data.msg;
