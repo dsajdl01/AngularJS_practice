@@ -3,7 +3,8 @@ fifaApp.controller('TeamDetailsCtrl', ['$location', '$routeParams', 'FifaService
 
  	var self = this;
  	self.team = {};
- 	FifaService.getTeamsDetails($routeParams.code).then(function(response){
+ 	
+ 	FifaService.getTeamDetails($routeParams.code).then(function(response){
  		self.team = response.data;
  	},
  	function(error){
