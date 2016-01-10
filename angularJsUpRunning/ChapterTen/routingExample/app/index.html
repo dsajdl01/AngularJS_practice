@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -16,17 +15,16 @@
 						<a href="#/login">Login</a>
 					</span>
 					<span ng-show="mainCtrl.userService.isLoggedIn">
-						<a href="/ap/logout">Logout</a>
+						<a href="/api/logout">Logout</a>
 					</span>
 				</div>	
 		</div>
 		<div ng-view></div>
-		<script src="script/vendors/angular.js"></script>
-	<!-- 	<script src="script/vendors/angular-min.js"></script> -->
-		<script src="script/vendors/angular-route.js"></script>
 
+		<script src="script/vendors/angular.js"></script>
+		<script src="script/vendors/angular-route.js"></script>
 		<script src="script/app.js"></script>
-		<script src="config/config.js"></script>
+		<script src="script/config/config.js"></script>
 		<script src="script/services/fifaService.js"></script>
 		<script src="script/services/userService.js"></script>
 		<script src="script/controller/controller.js"></script>
