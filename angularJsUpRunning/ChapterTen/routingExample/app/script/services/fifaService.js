@@ -4,8 +4,8 @@ fifaApp.factory('FifaService', ['$http', function($http){
 			return $http.get('/api/team');
 		},
 
-		getTeamsDetails: function(code){
-			return $http.get('/api/team' + code);
+		getTeamDetails: function(code){
+			return $http.get('/api/team/' + code);
 		}
 	}
 }]);
