@@ -3,6 +3,7 @@
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<meta content="utf-8" http-equiv="encoding">
 	<title>FIFA TEAMs Ecample</title>
+	<link href="css/fifaStyle.css" rel="stylesheet" media="all" />
 </head>
 	<body ng-app="fifaApp" class="landing">
 		<div class="topBar" ng-controller="mainController as mainCtrl">
@@ -20,6 +21,10 @@
 				</div>	
 		</div>
 		<div ng-view></div>
+
+		<div class="footer">
+			<p class= "webAuthor">Created by &#169; Daid Sajdl 2016</p>
+		</div>
 
 		<script src="script/vendors/angular.js"></script>
 		<script src="script/vendors/angular-route.js"></script>
