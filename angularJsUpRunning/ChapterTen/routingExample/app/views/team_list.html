@@ -4,15 +4,15 @@
 		<div class="teamInfo">
 			<div class="colLg-1">
 				<span ng-bind="team.rank"></span>
+				<span class="colLg-2">
+				<a title="Image Courtesy: Wikipedia" 
+					ng-href="#/team/{{team.code}}"
+					ng-bind="team.name" 
+					style="color: cadetblue;"></a>
+				</span>
 			</div>
-			<div class="colLg-2">
+			<div class="colLg-3">
 				<img ng-src="{{team.flagUrl}}" class="flag" >
-			</div>
-			<div class="col-3">
-			<a title="Image Courtesy: Wikipedia" 
-				ng-href="#/team/{{team.code}}"
-				ng-bind="team.name" 
-				style="color: cadetblue;"></a>
 			</div>
 		</div>
 	</div>
