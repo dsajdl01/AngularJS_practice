@@ -1,50 +1,30 @@
 <div class="teamDetailsContainer">
 	<div class="teamLogo">
-		<img title="Image Courtesy: Wikipedia" 
+		<img class="logoOfTeam" title="Image Courtesy: Wikipedia" 
 			ng-src="{{ teamDetailsCtrl.team.logoUrl }}">
 	</div>
 	<div class="name">
-		<span ng-bind="teamDetailsCtrl.team.name"></span>
-		(<span ng-bind="teamDetailsCtrl.team.fifaCode"></span>)
+		<span class="teamName" ng-bind="teamDetailsCtrl.team.name"></span>
+		(<span class="shortName" ng-bind="teamDetailsCtrl.team.fifaCode"></span>)
 	</div>
 	<div class="detail">
-		<div class="label">
-			<span>Nickname</span>
-		</div>
-		<div class="title">
-			<span ng-bind="teamDetailsCtrl.team.nickname"></span>
-		</div>
+		<span class="label">Nickname :</span>
+		<span class="title" ng-bind="teamDetailsCtrl.team.nickname"></span>
 	</div>
 	<div class="detail">
-		<div class="label">
-			<span>FIFA Ranking</span>
-		</div>
-		<div class="title">
-			<span ng-bind="teamDetailsCtrl.team.fifaRanking"></span>
-		</div>
+		<span class="label">FIFA Ranking :</span>
+		<span class="title" ng-bind="teamDetailsCtrl.team.fifaRanking"></span>
 	</div>
 	<div class="detail">
-		<div class="label">
-			<span>Association</span>
-		</div>
-		<div class="title">
-			<span ng-bind="teamDetailsCtrl.team.association"></span>
-		</div>
+		<span class="label">Association :</span>
+		<span class="title" ng-bind="teamDetailsCtrl.team.association"></span>
 	</div>
 	<div class="detail">
-		<div class="label">
-			<span>Head Coach</span>
-		</div>
-		<div class="title">
-			<span ng-bind="teamDetailsCtrl.team.headCoach"></span>
-		</div>
+		<span class="label">Head Coach :</span>
+		<span class="title" ng-bind="teamDetailsCtrl.team.headCoach"></span>
 	</div>
 	<div class="detail">
-		<div class="label">
-			<span>Captain</span>
-		</div>
-		<div class="title">
-			<span ng-bind="teamDetailsCtrl.team.captain"></span>
-		</div>
+		<span class="label">Captain :</span>
+		<span class="title" ng-bind="teamDetailsCtrl.team.captain"></span>
 	</div>
 </div>
