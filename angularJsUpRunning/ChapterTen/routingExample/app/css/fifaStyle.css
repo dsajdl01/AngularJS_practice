@@ -1,0 +1,258 @@
+/* ------------------------------*/
+/* --- Body of the all pages --- */
+/* ------------------------------*/
+.landing
+{
+	 background: #ffffff url(../image/football-ball-with-flag.jpg)  repeat;
+	 padding-bottom: 15px;
+}
+/* ------------------------------*/
+/* --- Top bar of the all pages --- */
+/* ------------------------------*/
+.topBar
+{
+    	background: #ffffff;
+    	height: 60px;
+    	font-size: 30px;
+    	padding: 10px;
+    	margin-top: 80px;
+    	margin-left: -10px;
+    	margin-right: -10px;
+    	color: red;
+    	font-weight: bold;
+}
+.pullRight
+{
+	padding-top: 8px;
+	padding-right: 10px;
+	float: right;
+}
+.pullLeft
+{
+	padding-top: 8px;
+	padding-left: 10px;
+	float: left;
+}
+
+/* -------------------------------------------*/
+/* --- Login of the template pages (html) --- */
+/* -------------------------------------------*/
+.loginContainer
+{
+	margin-top: 80px;
+	 background-color: #f5f5f5;
+   	 width: 40%;
+   	 left: 30%;
+   	 position: relative;
+   	 margin-bottom: 80px;
+   	 overflow: auto;
+}
+.alertDanger.ng-binding 
+{
+	font-size: 15px;
+	color: #B1001C;
+	margin-top: 15px;
+	margin-bottom: -15px;
+	padding-left: 10%;
+}
+.loginCard
+{
+    width: 80%;
+    margin: auto;
+}
+.btnSubmit
+{
+	float: right;
+	background-color: #00CC66;
+	padding:  10px 12px;
+	color: #ffffff;
+	border-radius: 6px;
+	font-weight: bold;
+}
+
+.btnSubmit:disabled
+{
+	float: right;
+  	background: #87EE81;
+  	padding:  10px 12px;
+	color: #ffffff;
+	border-radiust : 6px;
+	font-weight: bold;
+}
+.btnSubmit:disabled:hover
+{
+	float: right;
+ 	background: #87EE81;
+ 	padding:  10px 12px;
+	color: #ffffff;
+	border-radius: 6px;
+	font-weight: bold;
+}
+
+.btnSubmit:hover
+{
+	float: right;
+	background: #089C00;
+  	padding:  10px 12px;
+	color: #ffffff;
+	border-radius: 6px;
+	font-weight: bold;
+}
+.horizontalForm
+{
+	margin-top: 30px;
+	margin-bottom: 90px;
+}
+.formGroup
+{
+  margin-bottom: 15px;
+}
+
+.formControl {
+ 	 display: block;
+ 	 width: 100%;
+ 	 height: 34px;
+ 	 padding: 6px 12px;
+ 	 font-size: 14px;
+ 	 line-height: 1.42857143;
+ 	 color: #555;
+ 	 background-color: #fff;
+ 	 background-image: none;
+ 	 border: 1px solid #ccc;
+ 	 border-radius: 4px;
+ 	 -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+ 	 -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+label 
+{
+	font-weight: bold;
+}
+
+/* ----------------------------------------------------*/
+/* --- Teams page of the team_list template (html) --- */
+/* ----------------------------------------------------*/
+.teamListContainer.ng-scope 
+{
+ 	 margin-top: 50px;
+	 width: 60%;
+   	 left: 20%;
+   	 position: relative;
+   	 background-color: #f5f5f5;
+   	 padding: 20px;
+   	 opacity: 0.95;
+}
+
+.teamInfo
+{
+	margin-left: 10%;
+	border-top: 1px solid #c2c2c2; 
+	overflow: auto;
+	padding-bottom: 10px;
+	width: 80%;
+
+}
+.colLg-1
+{
+	float: left;
+	padding-left: 50px;
+	margin-left: 5px;
+	padding-top: 50px;
+	font-size: 150%;
+}
+span.colLg-2
+{
+	font-size: 120%;
+	padding-left: 30px;
+}
+img.flag
+{
+	width: 250px;
+	height: 120px;
+}
+.colLg-3
+{
+	float: right;
+	margin-top: 10px;
+}
+.teamListContainer.team
+{
+    margin: 5px;
+    border: black 1px solid;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+/* ------------------------------------------------------------*/
+/* --- Team Details page of the team_details template html --- */
+/* ------------------------------------------------------------*/
+.teamDetailsContainer 
+{
+	 margin-top: 50px;
+   	 width: 50%;
+   	 left: 25%;
+   	 position: relative;
+   	 background-color: #f5f5f5;
+   	 padding: 20px;
+   	 opacity: 0.95;
+}
+.teamLogo 
+{
+	text-align: center;
+}
+img.logoOfTeam
+{
+	width:  260px;
+	height: 370px;
+}
+.detail
+{
+	border-bottom: 1px solid #c2c2c2;
+}
+span.title,
+span.label
+{
+	font-weight: bold;
+	font-size: 120%;
+	padding-left: 20px;
+}
+span.shortName,
+span.title 
+{
+	color: #7670D5;
+}
+span.title 
+{
+	float: right;
+	padding-right: 20px;
+}
+.name
+{
+	font-size: 200%;
+	font-weight: bold;
+	border-bottom: 1px solid #c2c2c2;
+	text-align: center;
+}
+
+/* --------------------------------*/
+/* --- footer of the all pages --- */
+/* --------------------------------*/
+.footer
+{
+	border-top: solid 1px #c2c2c2;
+	overflow: auto;
+	margin-top: 20px;
+	padding-top: 10px; 
+	padding-right: 10px;
+	padding-left: 10px;
+	font-size: 12px;
+	padding-bottom: 10px;
+}
+.webAuthor
+{
+	float:right;
+	background-color: #ffffff;
+	margin-top: 0px;
+	padding: 1px;
+}
