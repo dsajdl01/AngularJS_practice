@@ -1,0 +1,1 @@
+var stockMarketApp = angular.module('stockMarketApp', []);
