@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<title>Stock Market App</title>
+</head>
+	<body ng-app="stockMarketApp">
+	<div ng-controller="StockMarketController as ctrl">
+		<h3>List of Stocks</h3>
+		<h6>Stock presented by using template include method</h6>
+		<div ng-repeat="stock in ctrl.stocks">
+			<div ng-include="ctrl.stockTemplate"></div>
+		</div>
+	</div>
+ 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script> 
+		<script src="script/app.js"></script>
+		<script src="script/stockMarketController.js"></script>
+	</body>
+</html>
