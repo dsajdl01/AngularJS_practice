@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<title> Swith App </title>
+</head>
+	<body ng-app="swithApp">
+		<div ng-controller="swithController as ctrl">
+			<h3>Condition Element in HTML</h3>
+			<button ng-click="ctrl.currentTag = 'tab1'">Tag 1</button>
+			<button ng-click="ctrl.currentTag = 'tab2'">Tag 2</button>
+			<button ng-click="ctrl.currentTag = 'tab3'">Tag 3</button>
+			<button ng-click="ctrl.currentTag = 'something'">Trigger Default</button>
+			<div ng-switch="ctrl.currentTag">
+				<div ng-switch-when="tab1">
+					Tab 1 is selected
+				</div>
+				<div ng-switch-when="tab2">
+					Tab 2 is selected
+				</div>
+				<div ng-switch-when="tab3">
+					Tab 3 is selected
+				</div>
+				<div ng-switch-default>
+					Not Known tab selected
+				</div>
+			</div>
+		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script> 
+		<script src="app.js"></script>
+	</body>
+</html>
