@@ -1,0 +1,6 @@
+<div class="stockDash">
+	Name: <span class="Name" ng-bind="stock.name + ', &nbsp;&nbsp; '  "></span>
+	Price: <span class="stock-price"	ng-bind="stock.price | currency" ></span>, &nbsp;&nbsp;
+	Previous: <span class="prev" ng-bind="stock.previous | number"></span>, &nbsp;&nbsp;
+	Percentage_Change: <span class="stock-chansge" ng-bind="ctrl.getChange(stock) + '%'"></span>
+</div>
