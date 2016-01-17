@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<title>M-music Songs using AngulaJS Directive Scope</title>
+</head>
+	<body ng-app="musicApp">
+		<div ng-controller="musicController as crl">
+			<h2>M-music Songs</h2>
+			<div ng-repeat="s  in crl.songs">
+				<div music-widget music-data="s">
+				</div>
+			</div>
+			</table>
+		</div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script> 
+		<script src="app.js"></script>
+		<script src="directive.js"></script>
+	</body>
+</html>
