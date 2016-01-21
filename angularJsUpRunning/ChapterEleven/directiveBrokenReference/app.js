@@ -1,0 +1,1 @@
+var stockBrRefApp = angular.module('stockBrRefApp', []);
