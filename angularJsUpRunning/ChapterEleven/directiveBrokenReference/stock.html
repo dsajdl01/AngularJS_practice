@@ -1,0 +1,11 @@
+<div class="stockContainer">
+	Name:
+	<span class="stockName" ng-bind="stockData.name"></span>
+	Price:
+	<span class="stockPrice" ng-bind="stockData.price | currency"></span>
+	Previous:
+	<span class="stockPrevious" ng-bind="stockData.previous"></span>
+	Precentage Change:
+	<span class="stockChange" ng-bind="getChange(stockData) + '%' "></span>
+	<button ng-click="changeStock()"> Change Stock in Directive</button>
+</div>
