@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<title>Stock Market App - using ditective broken reference</title>
+</head>
+	<body ng-app="stockBrRefApp">
+			<div ng-controller="stockMainController as mainCtrl">
+				<h3>List of Stock</h3>
+				<div ng-repeat="st in mainCtrl.stocks">
+					<div stock-widget stock-data="st"></div>
+				</div>
+
+				<hr>
+  			    <h3>List of Stocks Repeating Manually</h3>
+    			<div stock-widget stock-data="mainCtrl.stocks[mainCtrl.indexNum]">
+    			</div> 
+    			
+    			<hr>
+    			<button ng-click="mainCtrl.getSelectedNumber()"> Selcected index Number</button>
+				<input type="number" class="textNumbers"
+									 ng-maxlength="1"  
+									 name="Only positive number"
+									 ng-pattern="onlyNumbers" 
+									 ng-model="mainCtrl.inputNum"
+									 required />
+				<span ng-show="mainCtrl.invalid"> {{ mainCtrl.message }}</span>
+				<br /> <br />
+				<button ng-click="mainCtrl.changeFirstStock()" ng-disabled="mainCtrl.btnDisable">
+					Change {{mainCtrl.btnName }} Stock Form Controller
+				</button>
+				<hr>
+				<button ng-click="mainCtrl.changeAllStocks()">
+					Change all Stock Form Controller
+				</button>
+			</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script> 
+		<script src="app.js"></script>
+		<script src="stockMainController.js"></script>
+		<script src="directive.js"></script>
+	</body>
+</html>
