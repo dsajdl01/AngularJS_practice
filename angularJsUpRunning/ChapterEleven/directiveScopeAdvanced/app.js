@@ -1,0 +1,2 @@
+ advanceDivScopeApp = angular.module('advanceDivScopeApp', [])
+ 	
