@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>Stock Market App - Using Directine with Advance scope</title>
+	</head>
+	<body ng-app="advanceDivScopeApp">
+		<div ng-controller="mainStockController as mainCtrl">
+			<h2>Stock Market App - Using Directine with Advance scope</h2>
+			<h3>List of the Stock</h3>
+			<div ng-repeat="s in mainCtrl.stocks">
+				<div stock-widget
+					 stock-data="s"
+					 stock-title="Stock {{$index}}. {{s.name}}"
+					 when-select="mainCtrl.onStockSelected(stockPrice, stockName)">	
+				</div>
+			</div>
+			<div ng-show="mainCtrl.shows">
+				<h4>Items that has been pressed:</h4>
+				<div ng-repeat="i in mainCtrl.item">
+					<div>{{ i }}</div>
+				</div>
+			</div>
+		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script> 
+		<script src="app.js"></script>
+		<script src="directive.js"></script>
+		<script src="mainStockController.js"></script>
+	</body>
+</html>
