@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="linkApp">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>Geting harpelink from function using AngularJS</title>
+	</head>
+	<body ng-controller="mainController as ctrl">
+		<a href="#" ng-click="ctrl.getTab()">click me to open new tab</a><br /><br />
+		<a href="#" ng-click="ctrl.getRedirect()">click me to redirect url</a><br /><br />
+		<a href="#" ng-click="ctrl.getNewBrowser()">click me to open new Browser</a>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script type="text/javascript">
+				angular.module('linkApp', [])
+					.controller('mainController', ['$window', '$location', 
+													function($window, $location){	
+					var self = this;
+					self.getTab = function(){
+						$window.open("https://www.google.co.uk");
+					}	
+					self.getRedirect = function(){
+						$window.location.href = "https://www.google.co.uk");
+					}	
+					self.getNewBrowser = function(){
+						$window.open("https://www.google.co.uk",  "windowName", "height=1000%,width=1000%");
+					}	
+					}]);
+		</script>
+	</body>
+
+</html>
