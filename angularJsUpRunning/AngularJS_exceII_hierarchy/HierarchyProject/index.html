@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myMngtHierarchyApp">
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>AngularJS- Mamagment Hierarchies</title>
+	<!--     <link href="css/template.style.css" rel="stylesheet" media="all" />
+	    <link href="css/angular-motion.css" rel="stylesheet" media="all" /> -->
+	    <link href="css/style.css" rel="stylesheet" media="all" />
+	</head>
+	<body ng-controller="mngtHierarchyController as ctrl" ng-init="ctrl.init()">
+		<div class="mainContainer">
+			<h2>Profile of </h2>
+			<div class="leftContainer">
+				<h3>Hirarchy Account</h3>
+				<p>-----</p>
+				{{ ctrl.test}}
+			</div>
+			<div class="rightContainer">
+				<h3>Nodes:</h3>
+				<p>some content</p>
+			</div>
+		</div>
+
+		<div class="footer">
+			<p class="author">David Sajdl</p>
+			<p class="copyRight">&copy; Copyright 2016</p>
+		</div>
+
+		<script src="js/angularJS/angular.min.js"></script>
+		<script src="js/angularJS/angular-strap.min.js"></script>
+		<script src="js/angularJS/angular-resource.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/controller/mngtHierarchyController.js"></script>
+		<script src="js/service/hierarchyNodeService.js"></script>
+		<script src="js/service/commonNodeHierarchyModel.js"></script>
+	</body>
+</html>
