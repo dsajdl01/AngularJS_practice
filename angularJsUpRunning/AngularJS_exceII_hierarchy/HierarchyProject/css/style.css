@@ -1,0 +1,24 @@
+body {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.mainContainer {
+	overflow: auto;
+	height: 100%;
+}
+
+.leftContainer {
+	background-color: #efefef;
+    width: 310px;
+    float: left;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+.rightContainer {
+	background-color: #efefef;
+	width: 625px;
+	float:  right;
+	margin-top: 10px;
+	padding-left: 10px
+}
