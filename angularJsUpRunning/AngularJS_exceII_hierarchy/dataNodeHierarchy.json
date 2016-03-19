@@ -1,0 +1,41 @@
+[{
+	"name": "Manager_Yadira",
+	"id": 100,
+	"parentsId": null,
+	"child": [{
+		"name": "Supervisor_Bob",
+		"id": 101,
+		"parentsId": 100,
+		"child": [{
+			"name": "David",
+			"id": 102,
+			"parentsId": 101,
+			"child": {}
+		}, {
+			"name": "Magda",
+			"id": 103,
+			"parentsId": 101,
+			"child": {}
+		}]
+	}, {
+		"name": "Supervisor_Fred",
+		"id": 104,
+		"parentsId": 100,
+		"child": [{
+			"name": "leader_Gita",
+			"id": 105,
+			"parentsId": 104,
+			"child": [{
+				"name": "David",
+				"id": 106,
+				"parentsId": 105,
+				"child": {}
+			}, {
+				"name": "Jolita",
+				"id": 107,
+				"parentsId": 105,
+				"child": {}
+			}]
+		}]
+	}]
+}]
