@@ -11,6 +11,12 @@
 	<body ng-controller="mngtHierarchyController as ctrl" ng-init="ctrl.init()">
 		<div class="mainContainer">
 			<h2>Profile of </h2>
+			
+ 			<select name="repeatSelect" id="repeatSelect" ng-model="ctrl.nodes.repeatSelect">
+      			<option ng-repeat="option in ctrl.nodes.availableOptions" value="{{option.name}}">{{option.name}}</option>
+    		</select>
+			<hr /> 
+
 			<div class="leftContainer">
 				<h3>Hirarchy Account</h3>
 				<p>-----</p>
@@ -30,9 +36,15 @@
 		<script src="js/angularJS/angular.min.js"></script>
 		<script src="js/angularJS/angular-strap.min.js"></script>
 		<script src="js/angularJS/angular-resource.js"></script>
+		<script src="js/angularJS/angular-messages.js"></script>
+		<script src="js/angularJS/angularModal/angular-strap.min.js"></script>
+		<script src="js/angularJS/angularModal/angular-strap.tpl.min.js"></script>
+		<script src="js/angularJS/angularModal/angular.min.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/controller/mngtHierarchyController.js"></script>
 		<script src="js/service/hierarchyNodeService.js"></script>
 		<script src="js/service/commonNodeHierarchyModel.js"></script>
+		<script src="js/service/mngtHierarchyNodeServiceProvider.js"></script>
+		<script src="js/service/modalDialogBoxService.js"></script>
 	</body>
 </html>
