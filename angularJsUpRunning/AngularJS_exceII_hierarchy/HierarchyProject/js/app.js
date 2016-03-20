@@ -1,3 +1,5 @@
 var myMngtHierarchyApp = angular.module('myMngtHierarchyApp', [
-	'ngResource' 
+	'ngResource',
+	'ngMessages',
+	'mgcrea.ngStrap'
 	]);
