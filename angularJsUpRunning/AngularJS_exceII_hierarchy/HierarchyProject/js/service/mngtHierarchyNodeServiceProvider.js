@@ -1,10 +1,10 @@
 myMngtHierarchyApp.factory('mngtHierarchyNodeServiceProvider',
 	['hierarchyNodeService','commonNodeHeirarchyModel', 'modalDialogBoxService', 
 		function(hierarchyNodeService, commonNodeHeirarchyModel, modalDialogBoxService){
-		return new mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirarchyModel);
+		return new mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirarchyModel, modalDialogBoxService);
 }]);
 
-function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirarchyModel){
+function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirarchyModel, modalDialogBoxService){
 		var self = this;
 	
 		self.loadTopNode = function(callBack){
@@ -23,9 +23,17 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 			);
 		};
 
-		self.displayAssumeDialogBox = function(){
+		self.displayAssumeDialogBox = function( path ){
 
-		/*	modalDialogBoxService.setTemplate()*/
+			console.log(" nojjnsjak running.....");
+
+			modalDialogBoxService.setTemplate("js/forms/assumeIdentityTemplate.html");
+
+			modalDialogBoxService.shareModalData = {
+				pathToEachNode: path
+			};
+
+			modalDialogBoxService.showDialog();
 		}
 }
 	
