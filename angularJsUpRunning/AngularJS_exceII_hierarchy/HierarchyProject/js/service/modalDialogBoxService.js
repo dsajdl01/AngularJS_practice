@@ -13,6 +13,10 @@ function modalDialogBoxService($modal){
 	 	self.modalData.templateUrl = template;
 	 };
 
+	 self.notify = function(someObject) {};
+	 self.shareModalData = {};
+	 self.modalInstance = null
+
 	 self.showDialog = function(){
 	 	if(!self.modalData.templateUrl){
 	 		throw "No template set for modal dialog";
