@@ -2,16 +2,30 @@
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <h3 class="modal-title"><span class="glyphicon glyphicon-user"></span>Assume Identity</h3>
+         <button type="button" ng-click="assumeIndtCtrl.cancel()" class="btn close" data-dismiss="modal" aria-label="Close">X</button>
+            <h3 class="modal-title">Assume Identity</h3>
         </div>
         <div class="modal-body">
-			 <select name="repeatSelect" id="repeatSelect" ng-model="assumeIndtCtrl.selectedNode">
-                <option ng-repeat="path in assumeIndtCtrl.allPath" value="{{path}}">{{path}}</option>
-            </select>
-            <hr /> 
+            <div class="modal-content">
+    			 <select name="repeatSelect" 
+                         id="repeatSelect" 
+                         ng-model="assumeIndtCtrl.selectedNode" 
+                         ng-change="assumeIndtCtrl.getSelectedValue(assumeIndtCtrl.selectedNode)">
+                        <option ng-repeat="path in assumeIndtCtrl.allPath" 
+                                value="{{path}}">{{path}}</option>
+                </select>
+            </div>
+            <div class="help-block" ng-show="assumeIndtCtrl.showMessage">
+                <span class="error-message" >Please Assume Identity to access page.</span>
+            </div>
+                
         </div>
         <div class="modal-footer">
-            <p> &copy; Copyright 2016 Created by David Sajdl</p>
+             <div class="row">
+                   <div class="col-sm-4 col-sm-offset-8">
+                <span> &#169; Copyright 2016 Created by David Sajdl</span> 
+                </div>
+            </div>
         </div>
     </div>
   </div>
