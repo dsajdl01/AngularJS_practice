@@ -5,20 +5,17 @@ myMngtHierarchyApp.factory('hierarchyNodeService',
 
 function hierarchyNodeService($resource, $http){
 	this.$resource = $resource;
-//	this.$http = $http;
+	this.$http = $http;
 	var self = this;
 	
 	self.getSelectedNode = function(success, fail){
-		console.log("in========");
 		var URL = 'https://raw.githubusercontent.com/dsajdl01/AngularJS_practice/master/angularJsUpRunning/AngularJS_exceII_hierarchy/dataNodeHierarchy.json';
-		
-		return $http(
-						{
-							method: 'GET',
-							url: URL
-						})
+
+		return $http( {
+						method: 'GET',
+						url: URL
+					})
 					.then(function successCallBack(topRoot){
-						console.log("in top Root = ", topRoot);
 						success(topRoot.data);
 					},
 					function errorCallBack(error){
