@@ -6,7 +6,7 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 	var namePath = "";
 	var topName;
 	var firstNode = true;
-	self.showPage = false;
+	self.pageIsLoaded = false;
 	self.commonNodeHeirarchyModel = commonNodeHeirarchyModel;
 	self.test = 'any content';
 
@@ -16,11 +16,14 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 		var allPath = [];
 		mngtHierarchyNodeServiceProvider.loadTopNode(function(responce){
 			isAssumeIdentity = responce;
-			console.log(isAssumeIdentity, commonNodeHeirarchyModel.rootNode[0].name);
 			self.nodes  = getPathToNodes(commonNodeHeirarchyModel.rootNode[0], "", allPath);
 			self.nodes.unshift("[Assume Identity]");
-			console.log( self.selectedNode, "gdggdgd: ", self.nodes);
-			mngtHierarchyNodeServiceProvider.displayAssumeDialogBox(self.nodes);
+			mngtHierarchyNodeServiceProvider.displayAssumeDialogBox(self.nodes, function(selectedNode){
+				var nodeName = selectedNode.split(">")
+				self.accountTitle = nodeName[nodeName.length - 1];
+				self.pageIsLoaded = true;
+			});
+			
 		});
 		
 
