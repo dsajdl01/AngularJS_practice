@@ -8,30 +8,29 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 		var self = this;
 	
 		self.loadTopNode = function(callBack){
-			console.log("calling init is running....");
 			hierarchyNodeService.getSelectedNode(
 			 	function(rootNode){
 			 		commonNodeHeirarchyModel.rootNode = rootNode;
-			 		console.log("in mng har node", commonNodeHeirarchyModel.rootNode);
 			 		callBack(true);
 			 	},
 			 	function(fail){
-			 		console.log("in mng har failer", fail);
 			 		callBack(false);
 			 	}
 
 			);
 		};
 
-		self.displayAssumeDialogBox = function( path ){
-
-			console.log(" nojjnsjak running.....");
+		self.displayAssumeDialogBox = function( path, callBack ){
 
 			modalDialogBoxService.setTemplate("js/forms/assumeIdentityTemplate.html");
 
 			modalDialogBoxService.shareModalData = {
 				pathToEachNode: path
 			};
+
+			modalDialogBoxService.notify = function(selectedPath) {
+                callBack(selectedPath);
+            };
 
 			modalDialogBoxService.showDialog();
 		}
