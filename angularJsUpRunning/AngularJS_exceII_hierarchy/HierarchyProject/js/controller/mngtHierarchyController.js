@@ -18,9 +18,8 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 			isAssumeIdentity = responce;
 			self.nodes  = getPathToNodes(commonNodeHeirarchyModel.rootNode[0], "", allPath);
 			self.nodes.unshift("[Assume Identity]");
-			mngtHierarchyNodeServiceProvider.displayAssumeDialogBox(self.nodes, function(selectedNode){
-				var nodeName = selectedNode.split(">")
-				self.accountTitle = nodeName[nodeName.length - 1];
+			mngtHierarchyNodeServiceProvider.displayAssumeDialogBox(self.nodes, function(selectedNodeName){
+				self.accountTitle = selectedNodeName;
 				self.pageIsLoaded = true;
 			});
 			
@@ -28,6 +27,12 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 		
 
 	};
+
+	self.loadPage = function(){
+		console.log(self.commonNodeHeirarchyModel.rootNode, commonNodeHeirarchyModel.selectedTopRoot); 
+		self.pageIsLoaded = false;
+		self.init();
+	}
 
 	var getPathToNodes = function(nodes, pathToParent, allPath){
 
