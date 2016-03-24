@@ -29,10 +29,24 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 			};
 
 			modalDialogBoxService.notify = function(selectedPath) {
-                callBack(selectedPath);
+				var nodeName = selectedPath.split(">");
+				getSelectedRootNode(commonNodeHeirarchyModel.rootNode[0], nodeName[nodeName.length - 1])
+                callBack(nodeName[nodeName.length - 1]);
             };
 
 			modalDialogBoxService.showDialog();
+		}
+
+		var getSelectedRootNode = function(topNode, name){
+			console.log(name, topNode.name);
+			if(topNode.name == name){
+				commonNodeHeirarchyModel.selectedTopRoot = topNode
+				return;
+			} else {
+				for(var i = 0; i < topNode.child.length; i ++){
+					getSelectedRootNode(topNode.child[i], name);
+				}
+			}
 		}
 }
 	
