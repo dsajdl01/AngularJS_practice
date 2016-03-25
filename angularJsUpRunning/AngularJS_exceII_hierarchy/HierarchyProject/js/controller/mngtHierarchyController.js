@@ -1,36 +1,31 @@
 myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeServiceProvider', 'commonNodeHeirarchyModel',
 					function(mngtHierarchyNodeServiceProvider, commonNodeHeirarchyModel){
-	
+
 	var self = this;
-	var path = {};
-	var namePath = "";
-	var topName;
-	var firstNode = true;
-	self.pageIsLoaded = false;
+	self.showPage = false;
 	self.commonNodeHeirarchyModel = commonNodeHeirarchyModel;
-	self.test = 'any content';
+	self.commonNodeHeirarchyModel.allNodesDetails = [];
 
 	self.init = function(){
 		var isAssumeIdentity = false;
 		var isNodeLoaded = false;
+		self.showPage = false;
 		var allPath = [];
 		mngtHierarchyNodeServiceProvider.loadTopNode(function(responce){
-			isAssumeIdentity = responce;
-			self.nodes  = getPathToNodes(commonNodeHeirarchyModel.rootNode[0], "", allPath);
-			self.nodes.unshift("[Assume Identity]");
-			mngtHierarchyNodeServiceProvider.displayAssumeDialogBox(self.nodes, function(selectedNodeName){
+			isNodeLoaded = responce;
+			var nodes  = getPathToNodes(commonNodeHeirarchyModel.rootNode[0], "", allPath);
+			nodes.unshift("[Assume Identity]");
+			mngtHierarchyNodeServiceProvider.displayAssumeDialogBox(nodes, function(selectedNodeName){
 				self.accountTitle = selectedNodeName;
-				self.pageIsLoaded = true;
+				isAssumeIdentity = true;
+				canPageBeDisplayed(isNodeLoaded, isAssumeIdentity);
 			});
 			
 		});
-		
-
 	};
 
 	self.loadPage = function(){
-		console.log(self.commonNodeHeirarchyModel.rootNode, commonNodeHeirarchyModel.selectedTopRoot); 
-		self.pageIsLoaded = false;
+		self.showPage = false;
 		self.init();
 	}
 
@@ -38,10 +33,19 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 
 		var pathToCurrentNode = pathToParent + (pathToParent.length == 0 ? "": ">") + nodes.name
 		allPath.push(pathToCurrentNode);
+		nodes.pathToNode = pathToCurrentNode;
+		self.commonNodeHeirarchyModel.allNodesDetails.push(nodes); 
 		for(var i = 0; i < nodes.child.length; i++){
 			getPathToNodes(nodes.child[i], pathToCurrentNode, allPath);
 		}
 		return allPath;
 	}
+
+	var canPageBeDisplayed = function(isNodeLoaded, isAssumeIdentity){
+		self.showPage = isNodeLoaded && isAssumeIdentity
+	}
 	
+	self.displayAboutDialog = function(){
+		console.log("about link is press ... ")
+	}
 }]);
