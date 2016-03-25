@@ -23,30 +23,30 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 		self.displayAssumeDialogBox = function( path, callBack ){
 
 			modalDialogBoxService.setTemplate("js/forms/assumeIdentityTemplate.html");
-
 			modalDialogBoxService.shareModalData = {
 				pathToEachNode: path
 			};
-
 			modalDialogBoxService.notify = function(selectedPath) {
-				var nodeName = selectedPath.split(">");
-				getSelectedRootNode(commonNodeHeirarchyModel.rootNode[0], nodeName[nodeName.length - 1])
-                callBack(nodeName[nodeName.length - 1]);
+				saveSelectedNode(selectedPath);
+                callBack(getSelectedNodeName(selectedPath));
             };
-
 			modalDialogBoxService.showDialog();
+		};
+
+
+		var getSelectedNodeName = function(selectedPath){
+			var nodeName = selectedPath.split(">");
+			return nodeName[nodeName.length - 1];
 		}
 
-		var getSelectedRootNode = function(topNode, name){
-			console.log(name, topNode.name);
-			if(topNode.name == name){
-				commonNodeHeirarchyModel.selectedTopRoot = topNode
-				return;
-			} else {
-				for(var i = 0; i < topNode.child.length; i ++){
-					getSelectedRootNode(topNode.child[i], name);
+
+		var saveSelectedNode = function(selectedPath){
+			for(var i = 0; i < commonNodeHeirarchyModel.allNodesDetails.length; i++){
+				if(commonNodeHeirarchyModel.allNodesDetails[i].pathToNode == selectedPath){
+					commonNodeHeirarchyModel.selectedTopRootNode = commonNodeHeirarchyModel.allNodesDetails[i];
+					break;
 				}
 			}
-		}
+		};
 }
 	
