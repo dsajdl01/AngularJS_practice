@@ -1,0 +1,41 @@
+<div class="nodesChilders">
+	
+		<div class="leftContainer">
+					<div class="container col-md-4" ng-controller="nodeController as nodeCtrl">
+					<h3>Hirarchies Account</h3>
+					<script type="text/ng-template" id="tree_item_renderer.html">
+                	<div class="node">
+                    <edit-in-place
+                            select="nodeCtrl.userSelectNode(account)"
+                            is-selected-condition="{{account.id == nodeCtrl.commonNodeModel.userSelectedNode.id}}"
+                          //  update="nodeCtrl.updateEditingNodeName(newName)"
+                          // edit-after-creation="{{account.id == -1}}"
+                          //  cancel-creation="nodeCtrl.deleteNodeFromTree(account)"
+                          //  validate-value="nodeCtrl.validateNodeName(value)"
+                            value="{{account.name}}"
+                            editable="{{account.parentId != null}}"
+                           // editing="nodeCtrl.editStart(account)"
+                           // maxlength="255">
+                    </edit-in-place>
+                </div>
+                <ul>
+                    <li ng-repeat="account in account.child" ng-include="'tree_item_renderer.html'"></li>
+                </ul>
+            </script>
+            	<ul>
+                	<li class="node-list" ng-repeat="account in [nodeCtrl.commonNodeModel.selectedTopRoot" ng-include="'tree_item_renderer.html'"></li>
+                	 RRR: {{account}};
+            	</ul>
+            </div>
+			</div>
+
+				<div class="rightContainer">
+					
+					<h3>Nodes:</h3>
+					<p>some content</p>
+				</div>
+			</div>
+
+
+
+</div>
