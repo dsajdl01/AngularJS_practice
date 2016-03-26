@@ -27,8 +27,15 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 				pathToEachNode: path
 			};
 			modalDialogBoxService.notify = function(selectedPath) {
-				saveSelectedNode(selectedPath);
-                callBack(getSelectedNodeName(selectedPath));
+				console.log("fff", selectedPath);
+				if(!selectedPath){
+					callBack(selectedPath);
+				}
+				else
+				{
+					saveSelectedNode(selectedPath);
+    	            callBack(getSelectedNodeName(selectedPath));
+    	        }
             };
 			modalDialogBoxService.showDialog();
 		};
@@ -44,6 +51,7 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 			for(var i = 0; i < commonNodeHeirarchyModel.allNodesDetails.length; i++){
 				if(commonNodeHeirarchyModel.allNodesDetails[i].pathToNode == selectedPath){
 					commonNodeHeirarchyModel.selectedTopRootNode = commonNodeHeirarchyModel.allNodesDetails[i];
+					console.log("selectedTopRootNode: ", commonNodeHeirarchyModel.selectedTopRootNode)
 					break;
 				}
 			}
