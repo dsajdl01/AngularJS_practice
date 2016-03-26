@@ -12,13 +12,14 @@ myMngtHierarchyApp.controller('assumeIdentityController',['modalDialogBoxService
 		if(selectedPath !== "[Assume Identity]"){
 			self.showMessage = false;
 			modalDialogBoxService.notifyAndHide(selectedPath);
-		} else {
+		} else
+		{
 			self.showMessage = true;
 		}
 	};
 
 	self.cancel = function () {
-		modalDialogBoxService.hideDialog();
+		modalDialogBoxService.notifyAndHide(false);
 	}
 
 }]);
