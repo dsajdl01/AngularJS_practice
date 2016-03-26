@@ -12,7 +12,7 @@
 	</head>
 
 	<body ng-controller="mngtHierarchyController as ctrl" ng-init="ctrl.init()" >
-		
+	<toaster-container toaster-options="{'close-button': true}"></toaster-container>
 		<div class="mainContent" ng-show="ctrl.showPage">
 
 			<div class="sub-body"> 
@@ -21,11 +21,12 @@
 					<a class="accountManager" href="#/viewAccountInfo" title="Account Managment">Manage Account</a>
 					<a class="aboutApp" href="#" ng-click="ctrl.displayAboutDialog()" title="About Hierarchy App">About</a>
 					<a class="last" href="#" ng-click="ctrl.loadPage()" title="Change Node">Change identity </a>
+					<a class="templateAssumeIdentity" href="#/templateAssumeIdentity"></a>
 				</div>
 			</div>
 				
 			<div class="mainContainer">
-					<h2>Profile of {{ctrl.accountTitle}} </h2>
+					<h2>{{ctrl.accountTitle}} </h2>
 
 					<div ng-view></div>
 
@@ -39,17 +40,18 @@
 				</div>
 			</div>
 		</div>
-
 		<script src="js/angularJS/angular.min.js"></script>
 		<script src="js/angularJS/angular-strap.min.js"></script>
 		<script src="js/angularJS/angular-resource.js"></script>
 		<script src="js/angularJS/angular-messages.js"></script>
 		<script src="js/angularJS/angular-route.js"></script>
+		<script src="js/angularJS/toaster.js"></script>
 		<script src="js/angularJS/angularModal/angular-strap.min.js"></script>
 		<script src="js/angularJS/angularModal/angular-strap.tpl.min.js"></script>
 		<script src="js/angularJS/angularModal/angular.min.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/controller/nodeController.js"></script>
+		<script src="js/directives/nodeDirective.js"></script>
 		<script src="js/controller/mngtHierarchyController.js"></script>
 		<script src="js/service/hierarchyNodeService.js"></script>
 		<script src="js/service/commonNodeHierarchyModel.js"></script>
