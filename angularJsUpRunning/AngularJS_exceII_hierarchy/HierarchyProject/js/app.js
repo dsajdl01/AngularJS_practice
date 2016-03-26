@@ -1,4 +1,5 @@
 var myMngtHierarchyApp = angular.module('myMngtHierarchyApp', [
+	'toaster',
 	'ngRoute',
 	'ngResource',
 	'ngMessages',
@@ -14,6 +15,9 @@ myMngtHierarchyApp.config(['$routeProvider', function($routeProvider) {
 	  })
 	  .when('/viewAccountInfo',{
 	  	templateUrl: 'js/views/accountManagementHierarchyInfo.html'
+	  })
+	  .when('/templateAssumeIdentity',{
+	  	templateUrl: 'js/views/AssumeIdentityTemplate.html'
 	  })
 	  .otherwise({redirectTo: '/homeViewAccount'})
 	}]
