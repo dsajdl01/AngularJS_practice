@@ -7,6 +7,7 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 	self.commonNodeHeirarchyModel = commonNodeHeirarchyModel;
 	self.commonNodeHeirarchyModel.allNodesDetails = [];
 	self.accountTitle = "";
+	self.data = new Date();
 
 	self.init = function(){
 		var isAssumeIdentity = false;
@@ -15,6 +16,8 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 		$location.path('/homeViewAccount');
 		mngtHierarchyNodeServiceProvider.loadTopNode(function(responce){
 			isNodeLoaded = responce;
+			mngtHierarchyNodeServiceProvider.loadNodeDetails(function(responce){
+			});
 			if(isNodeLoaded){
 				self.getAssumeIdentityDialogBox();
 			} else {
@@ -30,6 +33,7 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 			nodes.unshift("[Assume Identity]");
 			mngtHierarchyNodeServiceProvider.displayAssumeDialogBox(nodes, function(selectedNodeName){
 				if(selectedNodeName == false){
+					self.accountTitle = "";
 					$location.path('/templateAssumeIdentity');
 				} else {
 					self.accountTitle = "Profile of " +selectedNodeName;
@@ -58,10 +62,11 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 	}
 
 	var canPageBeDisplayed = function(isNodeLoaded, isAssumeIdentity){
-		self.showPage = isNodeLoaded && isAssumeIdentity
+		self.showPage = isNodeLoaded && isAssumeIdentity;
 	}
 	
 	self.displayAboutDialog = function(){
-		console.log("about link is press ... ")
+		console.log("about link is press ... ");
+		return;
 	}
 }]);
