@@ -23,4 +23,19 @@ function hierarchyNodeService($resource, $http){
 					});
 	};
 
+	self.getNodesDetails = function(success, fail){
+	
+		var URL = 'https://raw.githubusercontent.com/dsajdl01/AngularJS_practice/master/angularJsUpRunning/AngularJS_exceII_hierarchy/node_data.json';
+		
+		return $http( {
+						method: 'GET',
+						url: URL
+					})
+					.then(function successCallBack(topRoot){
+						success(topRoot.data);
+					},
+					function errorCallBack(error){
+						fail(error);
+					});
+	}
 }

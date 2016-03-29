@@ -5,4 +5,7 @@ myMngtHierarchyApp.factory('commonNodeHeirarchyModel',[ function(){
 function commonNodeHeirarchyModel(){
 	var self = this;
 	self.rootNode = {};
+	self.nodesDetails = {};
+	self.selectedTopNode =  {};
+	self.allNodesDetails = {};
 }

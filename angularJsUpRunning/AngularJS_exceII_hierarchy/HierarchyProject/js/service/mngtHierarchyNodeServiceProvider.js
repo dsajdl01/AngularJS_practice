@@ -19,6 +19,19 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 
 			);
 		};
+		
+		self.loadNodeDetails = function(callback){
+			hierarchyNodeService.getNodesDetails(
+				function(nodesDetails){
+			 		commonNodeHeirarchyModel.nodesDetails = nodesDetails;
+			 		callback(true);
+			 	},
+			 	function(fail){
+			 		callback(false);
+			 	}
+
+			);
+		}
 
 		self.displayAssumeDialogBox = function( path, callBack ){
 
@@ -40,6 +53,11 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 			modalDialogBoxService.showDialog();
 		};
 
+		self.displayAboutDialogBox = function(){
+			modalDialogBoxService.setTemplate("js/views/aboutTemplate.html");
+			modalDialogBoxService.shareModalData = {};	
+			modalDialogBoxService.showDialog();
+		};
 
 		var getSelectedNodeName = function(selectedPath){
 			var nodeName = selectedPath.split(">");
@@ -50,8 +68,8 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 		var saveSelectedNode = function(selectedPath){
 			for(var i = 0; i < commonNodeHeirarchyModel.allNodesDetails.length; i++){
 				if(commonNodeHeirarchyModel.allNodesDetails[i].pathToNode == selectedPath){
-					commonNodeHeirarchyModel.selectedTopRootNode = commonNodeHeirarchyModel.allNodesDetails[i];
-					console.log("selectedTopRootNode: ", commonNodeHeirarchyModel.selectedTopRootNode)
+					commonNodeHeirarchyModel.selectedTopNode = commonNodeHeirarchyModel.allNodesDetails[i];
+					console.log("selectedTopNode: ", commonNodeHeirarchyModel.selectedTopNode)
 					break;
 				}
 			}
