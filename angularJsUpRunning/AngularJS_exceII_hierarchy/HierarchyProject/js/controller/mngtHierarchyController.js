@@ -59,14 +59,14 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 			getAllPathToNodes(nodes.child[i], pathToCurrentNode, allPath);
 		}
 		return allPath;
-	}
+	};
 
 	var canPageBeDisplayed = function(isNodeLoaded, isAssumeIdentity){
 		self.showPage = isNodeLoaded && isAssumeIdentity;
-	}
+	};
 	
-	self.displayAboutDialog = function(){
-		console.log("about link is press ... ");
-		return;
-	}
+	self.displayAboutDialog = function() {
+		mngtHierarchyNodeServiceProvider.displayAboutDialogBox();
+	};
+
 }]);
