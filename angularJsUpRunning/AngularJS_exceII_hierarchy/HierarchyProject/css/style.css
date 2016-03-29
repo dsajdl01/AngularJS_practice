@@ -96,6 +96,17 @@ h2 {
   padding: 20px 0px 5px 10px;
 
 }
+/* ********************
+**    About btn      **
+***********************/
+#right {
+  float: right;
+  margin: -25px 0px 0px 0px;
+  height: 20px;
+}
+.aboutContent {
+  padding-bottom: 30px;
+}
 /* *****************
 **    FOOTER      **
 ********************/

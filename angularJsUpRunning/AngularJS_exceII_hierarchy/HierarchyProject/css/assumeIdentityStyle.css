@@ -29,14 +29,15 @@
 .rightblock{
 	float: right;
 	line-height: 90%;
-	margin-right: 580px;
+	margin: 2px 290px 0px 0px;
+	width: 500px;
 }
 .leftblock{
 	float: left;
 	line-height: 90%;
 }
 .blockInfo{
-	height: 125px;
+	height: 140px;
 }
 
 .infoComments{
