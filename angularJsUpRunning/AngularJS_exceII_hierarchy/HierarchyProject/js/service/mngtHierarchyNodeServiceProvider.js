@@ -59,6 +59,15 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 			modalDialogBoxService.showDialog();
 		};
 
+		self.getSelectedNodeDetails = function(selectedNodeId) {
+			for(var i = 0; i < commonNodeHeirarchyModel.nodesDetails.length; i++){
+				if(commonNodeHeirarchyModel.nodesDetails[i].id == selectedNodeId){
+					return commonNodeHeirarchyModel.nodesDetails[i];
+				}
+			}
+			return null;
+		};
+
 		var getSelectedNodeName = function(selectedPath){
 			var nodeName = selectedPath.split(">");
 			return nodeName[nodeName.length - 1];
@@ -69,7 +78,7 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 			for(var i = 0; i < commonNodeHeirarchyModel.allNodesDetails.length; i++){
 				if(commonNodeHeirarchyModel.allNodesDetails[i].pathToNode == selectedPath){
 					commonNodeHeirarchyModel.selectedTopNode = commonNodeHeirarchyModel.allNodesDetails[i];
-					console.log("selectedTopNode: ", commonNodeHeirarchyModel.selectedTopNode)
+					commonNodeHeirarchyModel.userSelectedNode = commonNodeHeirarchyModel.allNodesDetails[i];
 					break;
 				}
 			}
