@@ -75,22 +75,6 @@ a.last:hover {
   text-decoration: underline;
 }
 
-.leftContainer {
-  	background-color: #efefef;
-    width: 310px;
-    float: left;
-    margin-top: 10px;
-    padding-left: 10px;
-}
-
-.rightContainer {
-	background-color: #efefef;
-	width: 625px;
-	float:  right;
-	margin-top: 10px;
-	padding-left: 10px
-}
-
 h2 {
   color: #000;
   padding: 20px 0px 5px 10px;
