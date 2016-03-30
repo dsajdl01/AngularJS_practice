@@ -2,12 +2,16 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
     return {
    	restric: 'E',
     	scope: {
-           value: '@'
+   		 	select: '&', // IS CALLED WHEN USER CLICK ON THE NODE "INPUT FILE"
+           	value: '@'
     	},
-    	template: '<input type="text" class="editField" ng-model="value" >', //<p> {{ s.name }} </p>', //'<input type="text" value="hkdfsk">', // ng-model="value"'>,
+    	templateUrl: 'js/views/accounts.html',
 
     	link: function ( $scope, $element, attrs ){
 
+    		$scope.selectedNode = function(){
+    			$scope.select();
+    		};
     	}
 	};
     
