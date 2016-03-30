@@ -1,4 +1,5 @@
-myMngtHierarchyApp.controller('accountInfoController',[ '$scope', 'commonNodeHeirarchyModel', function($scope, commonNodeHeirarchyModel) {
+myMngtHierarchyApp.controller('accountInfoController',[ '$scope', 'commonNodeHeirarchyModel', 'mngtHierarchyNodeServiceProvider',
+				 function($scope, commonNodeHeirarchyModel, mngtHierarchyNodeServiceProvider) {
 	
 	var self = this;
 	var commonNodeHeirarchyModel = commonNodeHeirarchyModel;
@@ -13,7 +14,7 @@ myMngtHierarchyApp.controller('accountInfoController',[ '$scope', 'commonNodeHei
             {
 				selectedNodeId = commonNodeHeirarchyModel.selectedTopNode.id;
 				if(selectedNodeId){
-					selectedNodeObject = getSelectedNodeObject(selectedNodeId);
+					selectedNodeObject = mngtHierarchyNodeServiceProvider.getSelectedNodeDetails(selectedNodeId);
 					initializeVariables(selectedNodeObject);
 				}
 			}
@@ -91,14 +92,5 @@ myMngtHierarchyApp.controller('accountInfoController',[ '$scope', 'commonNodeHei
 	var getSelectedNodeID = function(){
 		return commonNodeHeirarchyModel.selectedTopNode.id;
 	};
-
-	var getSelectedNodeObject = function(selectedNodeId) {
-		for(var i = 0; i < commonNodeHeirarchyModel.nodesDetails.length; i++){
-			if(commonNodeHeirarchyModel.nodesDetails[i].id == selectedNodeId){
-				return commonNodeHeirarchyModel.nodesDetails[i];
-			}
-		}
-		return null;
-	}
 	
 }]);
