@@ -1,27 +1,56 @@
-<div class="nodesChilders">
+<div class="nodesChilders" ng-controller="nodeController as nodeCtrl" ng-init="nodeCtrl.init()">
 	
 	<div class="leftContainer">
-		<div class="container col-md-4" ng-controller="nodeController as nodeCtrl" ng-init="nodeCtrl.init()">
-			<h3>Hirarchies Account</h3>
-
+		<h4 class="accountTitle">Hirarchies Account</h4>
+		<div class="container col-md-4">
+			
 			<script type="text/ng-template" id="tree_template.html">
 				<edit-node-in-place
+						select="nodeCtrl.userSelectedNode(s)"
  						value="{{s.name}}" >
- 				</edit-node-in-place> 
- 				 <ul>
+ 				</edit-node-in-place>
+ 			
+ 				 <ul class="nodeListName">
                     <li ng-repeat="s in s.child" ng-include="'tree_template.html'"></li>
-                </ul>
+                </ul>   
 			</script>
-			<ul>
+			
+			<ul class="nodeListName">
                 <li class="node-list" ng-repeat="s in [nodeCtrl.assumedNode]" ng-include="'tree_template.html'"></li>
             </ul>
-         </div>
+        </div>
 	</div>
 
 		<div class="rightContainer">
-					
-					<h3>Nodes:</h3>
-					<p>some content</p>
+				<h4 class="accountSelectedTitle">Selected Node {{nodeCtrl.titleOfNode}}</h4>
+				<div bs-tabs nav-class="nav nav-tabs noselect">
+	                <div bs-pane title="Account Info">
+	                    <!-- ng-init="ctrl.initialise()" -->
+	                    <div title="">
+	                        <br />
+	                        <div class="row" title="">
+	                            <div class="col-md-7">
+	                                <div></div>
+	                                <div>Child Count: {{ nodeCtrl.numberOfChild }}</div>
+	                                <div class="nowrap-with-ellipsis">DGSFHJKDG VVV V</div>
+	                            </div>
+	                        </div>
+	                    </div>
+                	</div>
+                	<div bs-pane title="Account Details">
+	                    <!-- ng-init="ctrl.initialise()" -->
+	                    <div title="">
+	                        <br />
+	                        <div class="row" title="">
+	                            <div class="col-md-7">
+	                                <div></div>
+	                                <div>details: </div>
+	                                <div class="nowrap-with-ellipsis">WTF...</div>
+	                            </div>
+	                        </div>
+	                    </div>
+                	</div>
+                </div>
 	
 		</div>
 
