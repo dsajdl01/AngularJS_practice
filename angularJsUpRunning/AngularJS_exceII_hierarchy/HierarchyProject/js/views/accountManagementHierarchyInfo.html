@@ -7,7 +7,8 @@
 			<script type="text/ng-template" id="tree_template.html">
 				<edit-node-in-place
 						select="nodeCtrl.userSelectedNode(s)"
- 						value="{{s.name}}" >
+ 						value="{{s.name}}"
+ 						is-selected-condition="{{s.id == nodeCtrl.commonNodeHeirarchyModel.userSelectedNode.id}}">
  				</edit-node-in-place>
  			
  				 <ul class="nodeListName">
@@ -29,10 +30,9 @@
 	                    <div title="">
 	                        <br />
 	                        <div class="row" title="">
-	                            <div class="col-md-7">
-	                                <div></div>
-	                                <div>Child Count: {{ nodeCtrl.numberOfChild }}</div>
-	                                <div class="nowrap-with-ellipsis">DGSFHJKDG VVV V</div>
+	                            <div class="accoutInfoContent">
+	                                <div class="text">{{ nodeCtrl.numberOfChild }}</div>
+	                                <div class="text">{{ nodeCtrl.profesionInfo }}</div>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -42,9 +42,22 @@
 	                    <div title="">
 	                        <br />
 	                        <div class="row" title="">
+	                            <div class="accoutDetailsContent">
+	                            	<div class="textWork">{{ nodeCtrl.workSince }}</div>
+	                                <div class="textTitle">{{ nodeCtrl.detailsTitle }}</div>
+	                                <div class="textContent">{{ nodeCtrl.commensData }}</div>
+	                            </div>
+	                        </div>
+	                    </div>
+                	</div>
+                	<div bs-pane title="Settings">
+	                    <!-- ng-init="ctrl.initialise()" -->
+	                    <div title="">
+	                        <br />
+	                        <div class="row" title="">
 	                            <div class="col-md-7">
 	                                <div></div>
-	                                <div>details: </div>
+	                                <div>To Modified Nodes Details: </div>
 	                                <div class="nowrap-with-ellipsis">WTF...</div>
 	                            </div>
 	                        </div>
