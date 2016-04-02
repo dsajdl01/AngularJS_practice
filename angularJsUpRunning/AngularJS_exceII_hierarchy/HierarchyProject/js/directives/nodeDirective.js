@@ -3,7 +3,8 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
    	restric: 'E',
     	scope: {
    		 	select: '&', // IS CALLED WHEN USER CLICK ON THE NODE "INPUT FILE"
-           	value: '@'
+           	value: '@',
+           	isSelectedCondition: '@'
     	},
     	templateUrl: 'js/views/accounts.html',
 
@@ -12,6 +13,15 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
     		$scope.selectedNode = function(){
     			$scope.select();
     		};
+
+    		$scope.getSelectedClass = function() {
+                return  isSelected() ? "selected" : "";
+            };
+
+            function isSelected() {
+                return $scope.isSelectedCondition === "true";
+            };
+
     	}
 	};
     
