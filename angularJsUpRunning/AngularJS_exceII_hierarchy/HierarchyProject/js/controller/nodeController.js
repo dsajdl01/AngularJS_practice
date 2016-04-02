@@ -2,30 +2,51 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 		function(commonNodeHeirarchyModel, mngtHierarchyNodeServiceProvider){
 
 			var self = this;
-			var commonNodeHeirarchyModel = commonNodeHeirarchyModel;
+			self.commonNodeHeirarchyModel = commonNodeHeirarchyModel;
 			var userSelectedNodeDetails;
 			self.assumedNode = "";
 
 			self.init = function(){
-				self.assumedNode = commonNodeHeirarchyModel.selectedTopNode;
-				userSelectedNodeDetails = getNodesDetails(self.assumedNode.id)
+				self.assumedNode = self.commonNodeHeirarchyModel.selectedTopNode;
+				userSelectedNodeDetails = getNodesDetails(self.commonNodeHeirarchyModel.userSelectedNode.id);
 				self.titleOfNode = self.assumedNode.name;
-				self.numberOfChild = (!commonNodeHeirarchyModel.userSelectedNode.child.length)? 0 : commonNodeHeirarchyModel.userSelectedNode.child.length;
-				 console.log("chm_usn" , commonNodeHeirarchyModel.userSelectedNode.name);
-				console.log("dir: ", self.assumedNode, self.assumedNode.name, userSelectedNodeDetails);
-	
+				self.numberOfChild = getChildMessage(self.commonNodeHeirarchyModel.userSelectedNode);
+				self.profesionInfo = getProfesionMessage(self.commonNodeHeirarchyModel.userSelectedNode, userSelectedNodeDetails);
+				self.workSince = getWorkMessage(self.commonNodeHeirarchyModel.userSelectedNode, userSelectedNodeDetails);
+				self.commensData = userSelectedNodeDetails.comments;
+				self.detailsTitle = self.commonNodeHeirarchyModel.userSelectedNode.name + " comments:";	
 			}
 
 			self.userSelectedNode = function(node){
-				commonNodeHeirarchyModel.userSelectedNode = node;
+				self.commonNodeHeirarchyModel.userSelectedNode = node;
 				userSelectedNodeDetails = getNodesDetails(node.id);
 				self.titleOfNode = node.name;
-				self.numberOfChild = (!node.child.length)? 0 : node.child.length;
-				 console.log(node, node.child.length, " <> ", userSelectedNodeDetails);
+				self.numberOfChild = getChildMessage(node);
+				self.profesionInfo = getProfesionMessage(node, userSelectedNodeDetails);
+				self.workSince = getWorkMessage(node, userSelectedNodeDetails);
+				self.commensData = userSelectedNodeDetails.comments; 
+				self.detailsTitle = node.name + " comments:";
 			};		
 
 			var getNodesDetails = function(nodeId){
+	//			console.log(nodeId);
 				return mngtHierarchyNodeServiceProvider.getSelectedNodeDetails(nodeId);
 			}	
 			
+			var getChildMessage = function(child){
+				if(!child.child.length){
+					return child.name + " does not have any child."
+				} else if (child.child.length == 1 ) {
+					return child.name + " has 1 child."
+				} else {
+					return child.name + " has " + child.child.length + " childern."
+				}
+			}
+			var getWorkMessage = function(child, details){
+				return child.name + " has been working for our company since " + details.start;
+			}
+
+			var getProfesionMessage = function(child, details){
+				return child.name + " works as " + details.possition + "."
+			}
 }]);
