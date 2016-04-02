@@ -11,6 +11,8 @@
     float: left;
     margin: 5px 2px 10px 15px;
     padding: 0px 5px 15px 2px;
+    height: 450px;
+    width: 31%;
 }
 h4.accountSelectedTitle{
 	margin-left: 2px;
@@ -72,10 +74,36 @@ input.editField  {
     text-overflow: ellipsis; 
 }
 
-/*.node span.nodes-II.selected {
+input.editField.selected {
       background-color: #005695;
-      color: #f0ad4e; }
+      color: #fff;
+      font-weight: bold;
+      font-style: italic; 
+ }
 
+.accoutInfoContent {
+	margin: 20px 10px 25px 30px;
+	height: 100px;
+}
+.accoutDetailsContent {
+	margin: 20px 10px 25px 30px;
+	height: 180px;	
+}
+
+.text {
+	margin-bottom: 10px;
+}
+.textWork {
+	margin-bottom: 50px;
+}
+.textContent {
+	text-align: justify;
+	text-justify: inter-word;
+	margin: 0px 45px 10px 30px;
+	background-color: #f8f8f8;
+	padding: 10px;
+}
+/*
 .node .error-message {
     display: none;
     position: absolute;
@@ -102,4 +130,5 @@ input.editField  {
 	margin: 5px 30px 10px 5px;
 	padding: 1px 15px 15px 10px;
 	width: 61%;
+	height: 450px;
 }

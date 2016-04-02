@@ -45,6 +45,8 @@
 	margin-bottom: 35px;
 }
 .emplComments{
+	text-align: justify;
+	text-justify: inter-word;
 	background-color: #efefff;
 	border-style: ridge;
 	border-color: #efefef;
