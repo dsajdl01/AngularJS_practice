@@ -8,7 +8,10 @@
 				<edit-node-in-place
 						select="nodeCtrl.userSelectedNode(s)"
  						value="{{s.name}}"
- 						is-selected-condition="{{s.id == nodeCtrl.commonNodeHeirarchyModel.userSelectedNode.id}}">
+ 						update="nodeCtrl.updateSelectedNodeName(newName)"
+ 						is-selected-condition="{{s.id == nodeCtrl.commonNodeHeirarchyModel.userSelectedNode.id}}"
+ 						validate-value="ctrl.validateNewNodeName(value)"
+ 						editable="{{ s.id != nodeCtrl.assumedNode.id }}">
  				</edit-node-in-place>
  			
  				 <ul class="nodeListName">
@@ -58,7 +61,57 @@
 	                            <div class="col-md-7">
 	                                <div></div>
 	                                <div>To Modified Nodes Details: </div>
-	                                <div class="nowrap-with-ellipsis">WTF...</div>
+	                               	<form role="form" name="form" novalidate ng-submit="nodeCtrl.save()">
+						<div class="form-group">
+							<div class="row">
+							
+								<div class="startDay" >
+								<label for="st">Start Day</label>
+								<input type="text"
+								   class="form-startDay"
+								   id="st"
+								   name="ST"
+								   maxlength="12"
+								   ng-change="nodeCtrl.startChange()"
+								   placeholder="Day starts:"
+								   autocomplete="off"
+								   autofocus
+								   ng-model="nodeCtrl.startDay"
+								   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"/>
+								</div>
+
+								<div class="position" >
+								<label for="position">Position</label>
+								<input type="text"
+								   class="form-position"
+								   id="position"
+								   name="ST"
+								   maxlength="225"
+								   ng-change="nodeCtrl.positionChange()"
+								   placeholder="Possition:"
+								   autocomplete="off"
+								   autofocus
+								   ng-model="nodeCtrl.position"
+								   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"/>
+								</div>
+							
+								<div class="comment" >
+								<label for="comment">Comments</label>
+								<textarea rows="8" cols="60"
+								   class="form-comment"
+								   id="comment"
+								   name="COMMENT"
+								   maxlength="1884"
+								   ng-change="nodeCtrl.commentChange()"
+								   placeholder="nodes abour employee:"
+								   autocomplete="off"
+								   autofocus
+								   ng-model="nodeCtrl.comment"
+								   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"></textarea>
+								</div>
+							</div>
+						</div>
+					</form>
 	                            </div>
 	                        </div>
 	                    </div>
