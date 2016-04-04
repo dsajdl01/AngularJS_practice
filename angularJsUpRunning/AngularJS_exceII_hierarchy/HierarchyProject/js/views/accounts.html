@@ -1,5 +1,3 @@
-
-<span class="nodesName"> 
-	<input type="text" class="editField" ng-class="getSelectedClass()" ng-click="selectedNode()" ng-dblclick="modifiedNodeName()" ng-keyup="fireEditing($event)" ng-model="value" ng-blur="fireBlurred()" ng-bind="value" title="{{value}}">
-	<span class="errorMesage"></span>
-</span>
+<span class="nodesName" ng-class="getSelectedClass()" ng-dblclick="modifiedNodeName()" ng-click="selectedNode()" ng-bind="value" title="{{value}}"></span>
+     <input type="text" class="editField" ng-model="value" ng-keyup="fireEditing($event)" ng-blur="fireBlurred()">
+<span>{{errorMessage}}</span>
