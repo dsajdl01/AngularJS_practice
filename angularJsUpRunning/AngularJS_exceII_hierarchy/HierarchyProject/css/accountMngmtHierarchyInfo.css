@@ -5,6 +5,9 @@
 	margin-top: -40px;
 }
 
+/*------------------------------*
+***   left side of the page   ***
+*-------------------------------*/
 .leftContainer {
   	background-color: #fff;
   	box-shadow: 10px 10px 10px 10px #c2c2c2;
@@ -31,34 +34,31 @@ div.container.col-md-4{
 ul.nodeListName {
 	margin-left: -10px;
 }
-/*--------------------*/
-.nodesName {
-  font-size: 1.2em;
-  line-height: 1.3em;
-  position: relative; 
+/*----------------------------------*
+***  Account or node hierarchies  ***
+*-----------------------------------*/
+.node input  {
+  display: none;
+  border-radius: 2px;
+  padding: 3px 7px;
+  margin: 4px 0;
 }
 
-.nodesName input {
-    display: none;
-    border-radius: 12px;
-    padding: 3px 7px;
-    border: 2px solid #005695;
-    margin: 4px 0; 
+.node .active input  {
+  border-radius: 2px;
+  padding: 3px 7px;
+  margin: 4px 0;
+  border: 2px solid #005695;
+  color: #A60400;
+  font-weight: bold;
+  background-color: #f8f8f8;
 }
- 
-.nodesName .active span.nodes-II  {
+.node .active span.nodesName {
     display: none; 
 }
 
-.nodesName .active input {
-    display: inline-block; 
-}
-
-.nodesName .active + span.node-buttons {
-    display: none; 
-}
-
-input.editField  {
+.node span.nodesName {
+    font-size: 90%;
     display: inline-block;
     border-radius: 2px;
     border: 1px solid gray;
@@ -71,58 +71,19 @@ input.editField  {
     vertical-align: top;
     outline: none;
     cursor: pointer;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
 }
-
-input.editField.selected {
+.node span.nodesName.selected {
+      font-size: 90%;
       background-color: #005695;
       color: #fff;
       font-weight: bold;
       font-style: italic; 
  }
 
-.accoutInfoContent {
-	margin: 20px 10px 25px 30px;
-	height: 100px;
-}
-.accoutDetailsContent {
-	margin: 20px 10px 25px 30px;
-	height: 180px;	
-}
-
-.text {
-	margin-bottom: 10px;
-}
-.textWork {
-	margin-bottom: 50px;
-}
-.textContent {
-	text-align: justify;
-	text-justify: inter-word;
-	margin: 0px 45px 10px 30px;
-	background-color: #f8f8f8;
-	padding: 10px;
-}
-/*
-.node .error-message {
-    display: none;
-    position: absolute;
-    top: -20px;
-    left: 165px;
-    z-index: 100;
-    background-color: #fff;
-    color: #f0ad4e;
-    border-radius: 6px;
-    padding: 1px 6px;
-    border: 1px solid #f0ad4e;
-    font-size: 0.8em; 
-}
-
-.node .error .error-message {
-    display: inline-block; 
-}*/
-
-
+/*-------------------------------*
+***   right side of the page   ***
+*--------------------------------*/
 .rightContainer {
 	background-color: #fff;
   	box-shadow: 10px 10px 10px 10px #c2c2c2;
@@ -131,4 +92,45 @@ input.editField.selected {
 	padding: 1px 15px 15px 10px;
 	width: 61%;
 	height: 450px;
+}
+
+.accoutInfoContent {
+  margin: 20px 10px 25px 30px;
+  height: 100px;
+}
+.accoutDetailsContent {
+  margin: 20px 10px 25px 30px;
+  height: 180px;  
+}
+
+.text {
+  margin-bottom: 10px;
+}
+.textWork {
+  margin-bottom: 50px;
+}
+.textContent {
+  text-align: justify;
+  text-justify: inter-word;
+  margin: 0px 45px 10px 30px;
+  background-color: #f8f8f8;
+  padding: 10px;
+}
+
+
+/* form */
+.formText {
+  margin-left: 23px;
+}
+.formContainer {
+  margin: 10px 30px 0px 20px;
+  border-radius: 5px;
+  border: 1px solid #c2c2c2;
+  background-color: #f8ffff;
+  padding: 15px 25px 0px 40px;
+}
+
+.btnSave {
+  float: right;
+  margin-top: -35px;
 }
