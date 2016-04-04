@@ -5,6 +5,7 @@
 		<div class="container col-md-4">
 			
 			<script type="text/ng-template" id="tree_template.html">
+				<div class="node">
 				<edit-node-in-place
 						select="nodeCtrl.userSelectedNode(s)"
  						value="{{s.name}}"
@@ -13,7 +14,7 @@
  						validate-value="ctrl.validateNewNodeName(value)"
  						editable="{{ s.id != nodeCtrl.assumedNode.id }}">
  				</edit-node-in-place>
- 			
+ 				</div>
  				 <ul class="nodeListName">
                     <li ng-repeat="s in s.child" ng-include="'tree_template.html'"></li>
                 </ul>   
@@ -58,68 +59,66 @@
 	                    <div title="">
 	                        <br />
 	                        <div class="row" title="">
-	                            <div class="col-md-7">
-	                                <div></div>
-	                                <div>To Modified Nodes Details: </div>
+<!-- 	                            <div class="col-md-7"> -->
+	                            <div class="formText"><strong>Modified Nodes Details:</strong> modification will override current text and it will be available to particular employee.</div>
+	                             <div class="formContainer">
 	                               	<form role="form" name="form" novalidate ng-submit="nodeCtrl.save()">
-						<div class="form-group">
-							<div class="row">
-							
-								<div class="startDay" >
-								<label for="st">Start Day</label>
-								<input type="text"
-								   class="form-startDay"
-								   id="st"
-								   name="ST"
-								   maxlength="12"
-								   ng-change="nodeCtrl.startChange()"
-								   placeholder="Day starts:"
-								   autocomplete="off"
-								   autofocus
-								   ng-model="nodeCtrl.startDay"
-								   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"/>
-								</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="startDay" >
+													<label for="st">Start Day</label>
+													<input type="text"
+													   class="form-startDay"
+													   id="st"
+													   name="ST"
+													   maxlength="10"
+													   ng-change="nodeCtrl.startChange()"
+													   placeholder="dd/mm/yyyy"
+													   autocomplete="off"
+													   autofocus
+													   ng-model="nodeCtrl.startDay"
+													   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"/>
+												</div>
 
-								<div class="position" >
-								<label for="position">Position</label>
-								<input type="text"
-								   class="form-position"
-								   id="position"
-								   name="ST"
-								   maxlength="225"
-								   ng-change="nodeCtrl.positionChange()"
-								   placeholder="Possition:"
-								   autocomplete="off"
-								   autofocus
-								   ng-model="nodeCtrl.position"
-								   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"/>
-								</div>
-							
-								<div class="comment" >
-								<label for="comment">Comments</label>
-								<textarea rows="8" cols="60"
-								   class="form-comment"
-								   id="comment"
-								   name="COMMENT"
-								   maxlength="1884"
-								   ng-change="nodeCtrl.commentChange()"
-								   placeholder="nodes abour employee:"
-								   autocomplete="off"
-								   autofocus
-								   ng-model="nodeCtrl.comment"
-								   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"></textarea>
-								</div>
-							</div>
-						</div>
-					</form>
+												<div class="position" >
+													<label for="position">Position&nbsp</label>
+													<input type="text"
+													   class="form-position"
+													   id="position"
+													   name="ST"
+													   maxlength="225"
+													   ng-change="nodeCtrl.positionChange()"
+													   placeholder="Employee profession"
+													   autocomplete="off"
+													   autofocus
+													   ng-model="nodeCtrl.position"
+													   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"/>
+												</div>
+											
+												<div class="comment" >
+													<label for="comment">Comments</label>
+													<br />
+													<textarea rows="6" cols="55"
+													   class="form-comment"
+													   id="comment"
+													   name="COMMENT"
+													   maxlength="1884"
+													   ng-change="nodeCtrl.commentChange()"
+													   placeholder="Node about employee:"
+													   autocomplete="off"
+													   autofocus
+													   ng-model="nodeCtrl.comment"
+													   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"></textarea>
+													</div>
+													<button class="btnSave" type="button" ng-click="nodeCtrl.save()">Save</button>
+												</div>
+											</div>
+										</form>
+									</div>
 	                            </div>
 	                        </div>
-	                    </div>
+<!-- 	                    </div> -->
                 	</div>
-                </div>
-	
+                </div>	
 		</div>
-
-
-
 </div>
