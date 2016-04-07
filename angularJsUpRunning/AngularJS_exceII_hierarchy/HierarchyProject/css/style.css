@@ -75,6 +75,11 @@ a.last:hover {
   text-decoration: underline;
 }
 
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
 h2 {
   color: #000;
   padding: 20px 0px 5px 10px;
