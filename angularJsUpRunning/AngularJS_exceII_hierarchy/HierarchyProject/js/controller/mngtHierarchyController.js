@@ -4,6 +4,7 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 	var self = this;
 	var isNodeLoaded = false;
 	self.showPage = false;
+	self.isDisabled = false;
 	self.commonNodeHeirarchyModel = commonNodeHeirarchyModel;
 	self.commonNodeHeirarchyModel.allNodesDetails = [];
 	self.accountTitle = "";
@@ -13,6 +14,8 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 		var isAssumeIdentity = false;
 		isNodeLoaded = false;
 		self.showPage = false;
+		self.isDisabled = false;
+		console.log("self.isDisabled: ", self.isDisabled);
 		$location.path('/homeViewAccount');
 		mngtHierarchyNodeServiceProvider.loadTopNode(function(responce){
 			isNodeLoaded = responce;
@@ -33,9 +36,13 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 			nodes.unshift("[Assume Identity]");
 			mngtHierarchyNodeServiceProvider.displayAssumeDialogBox(nodes, function(selectedNodeName){
 				if(selectedNodeName == false){
+					self.isDisabled = selectedNodeName;
+					console.log("self.isDisabled in responce: ", self.isDisabled);
 					self.accountTitle = "";
 					$location.path('/templateAssumeIdentity');
 				} else {
+					self.isDisabled = true;
+					console.log("self.isDisabled in responce: ", self.isDisabled);
 					self.accountTitle = "Profile of " +selectedNodeName;
 				}
 				isAssumeIdentity = true;
