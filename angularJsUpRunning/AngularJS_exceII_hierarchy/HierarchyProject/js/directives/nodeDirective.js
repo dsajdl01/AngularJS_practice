@@ -7,18 +7,18 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
           update: '&',
           isSelectedCondition: '@',
           validateValue: '&',
-          editable: '@'
+          editable: '@',
+          beingEdit: '&'
     	},
     	templateUrl: 'js/views/accounts.html',
 
     	link: function ( $scope, $element, attrs ){
 
         var originalNodeValue, savingValue = false;
-        console.log("element: ", $element.children()[1]);
+      
         var inputElement = angular.element( $element.children()[1] );
 
     		$scope.selectedNode = function(){
-          console.log("selectedNode() running...");
     			$scope.select();
     		};
 
@@ -31,11 +31,9 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
             savingValue = false;
             originalNodeValue = $scope.value;
             $element.addClass('active');
-            console.log($element.addClass('active'));
             inputElement[0].focus();
-            console.log("innn is Editable()");
+            $scope.beingEdit();
           }
-          console.log("modifiedNodeName() function running ....", $element);
         }
 
         $scope.fireBlurred = function(){
@@ -54,13 +52,14 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
         $scope.fireEditing = function(event)
             {
                 var validInput = validateInput();
+                console.log("valInput: ", validateInput);
                 if(event.keyCode === 13) {
-                    if (!validInput) {
+                    if (!validInput.valid) {
                         event.preventDefault();
-                        console.log("validateInput is false!!! ");
-                        cancelEditingEvent(event);
                         return;
                     }
+                    cancelEditingEvent(event);
+                    originalNodeValue = $scope.value;
                     $scope.update({newName: $scope.value});
                 }
                 else if(event.keyCode === 27) {
@@ -68,7 +67,7 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
                 }
             };
 
-        function isSelected() {
+        var isSelected = function() {
             return $scope.isSelectedCondition === "true";
         };
 
@@ -76,13 +75,11 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
           savingValue = false;
           if (angular.isDefined(event)) {
               event.preventDefault();
-              console.log("event is Defined!!!");
             }
-          $element.removeClass( 'active' );
+          $element.removeClass('active');
         }
 
         var cancelEditing = function(event){
-          console.log("originalNodeValue:", originalNodeValue ,"\ncancelEditing(): ", event, "\nelement: ", $element);
           cancelEditingEvent(event)
           $scope.value = originalNodeValue;
         }
