@@ -11,8 +11,9 @@
  						value="{{s.name}}"
  						update="nodeCtrl.updateSelectedNodeName(newName)"
  						is-selected-condition="{{s.id == nodeCtrl.commonNodeHeirarchyModel.userSelectedNode.id}}"
- 						validate-value="ctrl.validateNewNodeName(value)"
- 						editable="{{ s.id != nodeCtrl.assumedNode.id }}">
+ 						validate-value="nodeCtrl.validateNewNodeName(value)"
+ 						editable="{{ s.id != nodeCtrl.assumedNode.id }}"
+ 						being-edit="nodeCtrl.editingStart(s)">
  				</edit-node-in-place>
  				</div>
  				 <ul class="nodeListName">
