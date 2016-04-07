@@ -20,12 +20,12 @@
 			<div class="top-bar"> 
 				<div class="navigation-menu">
 				<ul>
-					<li><a class="emloyeeProfil" href="#/homeViewAccount" title="Home"> Employee Managment </a></li>
-					<li><a class="homeAccount" href="#/homeViewAccount" title="Home - View User Account">Selected Account </a></li>
-					<li><a class="accountManager" href="#/viewAccountInfo" title="Account Managment">Manage Account</a></li>
-					<li><a class="aboutApp" href="#" ng-click="ctrl.displayAboutDialog()" title="About Hierarchy App">About</a></li>
+					<li><a class="emloyeeProfil" ng-href="#/homeViewAccount" ng-class="{disabled: !ctrl.isDisabled}"  title="Home"> Employee Managment </a></li>
+					<li><a class="homeAccount" ng-href="#/homeViewAccount" ng-class="{disabled: !ctrl.isDisabled}" title="Home - View User Account">Selected Account </a></li>
+					<li><a class="accountManager" ng-href="#/viewAccountInfo" ng-class="{disabled: !ctrl.isDisabled}"  title="Account Managment">Manage Account</a></li>
+					<li><a class="aboutApp" ng-href="#" ng-class="{disabled: !ctrl.isDisabled}" ng-click="ctrl.displayAboutDialog()" title="About Hierarchy App">About</a></li>
 					<li><a class="last" href="#" ng-click="ctrl.loadPage()" title="Change Node">Change identity </a></li>
-					<li><a class="templateAssumeIdentity" href="#/templateAssumeIdentity"></a></li>
+					<li><a class="templateAssumeIdentity" ng-href="#/templateAssumeIdentity"></a></li>
 				</ul>
 				<span class="currentDay"> Today: {{ ctrl.data | date:'dd/MM/yyyy' }}</span>
 				</div>
