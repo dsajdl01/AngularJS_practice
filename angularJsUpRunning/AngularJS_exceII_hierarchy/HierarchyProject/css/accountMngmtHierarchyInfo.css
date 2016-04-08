@@ -15,7 +15,8 @@
     margin: 5px 2px 10px 15px;
     padding: 0px 5px 15px 2px;
     height: 450px;
-    width: 31%;
+    width: 35%;
+    overflow: auto;
 }
 h4.accountSelectedTitle{
 	margin-left: 2px;
@@ -81,6 +82,64 @@ ul.nodeListName {
       font-weight: bold;
       font-style: italic; 
  }
+.node_error_messages{
+  position: absolute;
+  background-color: #d95347;
+  color: #ffffff;
+  border: 1px solid #000;
+  border-radius: 6px;
+  bottom: -19px;
+  left: 5px;
+  padding: 1px 6px;
+  font-size: 0.8em;
+  white-space: nowrap;
+}
+
+
+.node span.node-button{
+  white-space: nowrap;
+  width: 50px;
+  margin: -33px 1px 1px 188px;
+  position: absolute;
+  border-color: black;
+}
+ 
+div.addDeledBtn {
+  background-color: yellow;
+}
+
+.btn-node-del {
+  border: 1px solid #000;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  background-color: #d95347;
+  color: #fff;
+  float: right;
+  margin: 0px;
+}
+
+div.addDeledBtn button.btn-node.btn-node-add {
+  display: block; 
+  border-color: #f00;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  background-color: #e6e6e6;
+  color: #c20000;
+  float: left;
+}
+
+/*div.addDeledBtn button.btn-node.btn-node-add:hover {
+  display: block; 
+  border-color: #f00;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  background-color: #e6e6e6;
+  color: #c20000;
+  float: left;
+}*/
 
 /*-------------------------------*
 ***   right side of the page   ***
@@ -91,7 +150,7 @@ ul.nodeListName {
 	float:  right;
 	margin: 5px 30px 10px 5px;
 	padding: 1px 15px 15px 10px;
-	width: 61%;
+	width: 57%;
 	height: 450px;
 }
 
