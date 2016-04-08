@@ -18,6 +18,8 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
       
         var inputElement = angular.element( $element.children()[1] );
 
+        $scope.valid = true;
+
     		$scope.selectedNode = function(){
     			$scope.select();
     		};
@@ -46,6 +48,14 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
 
         var validateInput = function(){
             var validatedResult = $scope.validateValue({value: $scope.value});
+            if(validatedResult.value){
+              $scope.errorMessage = "";
+              $scope.valid = true;
+            }
+            else {
+              $scope.errorMessage = validatedResult.message;
+              $scope.valid = validatedResult.valid;
+            }
             return validatedResult;
         }
 
@@ -62,7 +72,7 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
                     originalNodeValue = $scope.value;
                     $scope.update({newName: $scope.value});
                 }
-                else if(event.keyCode === 27) {
+                else if(event.keyCode === 27){
                     cancelEditing(event);
                 }
             };
@@ -80,6 +90,7 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
         }
 
         var cancelEditing = function(event){
+          $scope.valid = true;
           cancelEditingEvent(event)
           $scope.value = originalNodeValue;
         }
