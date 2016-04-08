@@ -15,6 +15,12 @@
  						editable="{{ s.id != nodeCtrl.assumedNode.id }}"
  						being-edit="nodeCtrl.editingStart(s)">
  				</edit-node-in-place>
+ 				<span class="node-button" >
+ 					<div class="addDeledBtn">
+                        <button class="btn-node btn-node-add" ng-click="nodeCtrl.createNewChildNodeForUserToEdit(s)">+</button>
+                        <button class="btn-node btn-node-add" ng-click="nodeCtrl.deleteNode(s)" ng-show="!s.isRootNode"> - </button>
+                     </div>
+                </span>
  				</div>
  				 <ul class="nodeListName">
                     <li ng-repeat="s in s.child" ng-include="'tree_template.html'"></li>
@@ -99,7 +105,7 @@
 												<div class="comment" >
 													<label for="comment">Comments</label>
 													<br />
-													<textarea rows="6" cols="55"
+													<textarea rows="6" cols="52"
 													   class="form-comment"
 													   id="comment"
 													   name="COMMENT"
