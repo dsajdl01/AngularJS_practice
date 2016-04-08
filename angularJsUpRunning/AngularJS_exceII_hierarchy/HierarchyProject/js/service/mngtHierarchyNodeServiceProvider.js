@@ -78,6 +78,7 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 			for(var i = 0; i < commonNodeHeirarchyModel.allNodesDetails.length; i++){
 				if(commonNodeHeirarchyModel.allNodesDetails[i].pathToNode == selectedPath){
 					commonNodeHeirarchyModel.selectedTopNode = commonNodeHeirarchyModel.allNodesDetails[i];
+					commonNodeHeirarchyModel.selectedTopNode.isRootNode = true;
 					commonNodeHeirarchyModel.userSelectedNode = commonNodeHeirarchyModel.allNodesDetails[i];
 					break;
 				}

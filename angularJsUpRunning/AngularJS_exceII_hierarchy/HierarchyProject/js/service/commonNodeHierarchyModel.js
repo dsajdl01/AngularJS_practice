@@ -9,4 +9,5 @@ function commonNodeHeirarchyModel(){
 	self.selectedTopNode =  {};
 	self.allNodesDetails = {};
 	self.userSelectedNode = {};
+	self.editingNode = {};
 }
