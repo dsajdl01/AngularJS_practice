@@ -54,5 +54,12 @@
 		"start": "02/12/2011",
 		"possition": "Senior Front End Developer and Designer",
 		"comments": "Jolita is Senior front end developer specialize on JavaScript, AngularJS, PHP include CSS and HTML.  She also provide our design of the software views. She is able to prioritise her own workload to achieve the best results and work effectively and efficiently. She is able to adapt to all situations and she is always willing to offer support and assistance to others." 
+	},	
+	{
+		"id": 108,
+		"dob": "04/09/1994",
+		"start": "05/02/2016",
+		"possition": "Trainer - Programming",
+		"comments": "Rob is currently study at University and he has just joined our company for a couple months as practician for a front end Software developer under supervision Jolita and rest of the Software developer team." 
 	}
 ]
