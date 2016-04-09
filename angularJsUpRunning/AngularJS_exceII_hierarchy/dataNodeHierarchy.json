@@ -1,40 +1,45 @@
 [{
-	"name": "Manager_Yadira",
+	"name": "Yadira",
 	"id": 100,
 	"parentsId": null,
 	"child": [{
-		"name": "Supervisor_Bob",
+		"name": "Bob",
 		"id": 101,
 		"parentsId": 100,
 		"child": [{
 			"name": "David",
 			"id": 102,
 			"parentsId": 101,
-			"child": {}
+			"child": []
 		}, {
 			"name": "Magda",
 			"id": 103,
 			"parentsId": 101,
-			"child": {}
+			"child": []
 		}]
 	}, {
-		"name": "Supervisor_Fred",
+		"name": "Fred",
 		"id": 104,
 		"parentsId": 100,
 		"child": [{
-			"name": "leader_Gita",
+			"name": "Gita",
 			"id": 105,
 			"parentsId": 104,
 			"child": [{
 				"name": "David",
 				"id": 106,
 				"parentsId": 105,
-				"child": {}
+				"child": []
 			}, {
 				"name": "Jolita",
 				"id": 107,
 				"parentsId": 105,
-				"child": {}
+				"child": [{
+					"name": "Rob",
+					"id": 108,
+					"parentsId": 107,
+					"child": []
+				}]
 			}]
 		}]
 	}]
