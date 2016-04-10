@@ -13,12 +13,13 @@
  						is-selected-condition="{{s.id == nodeCtrl.commonNodeHeirarchyModel.userSelectedNode.id}}"
  						validate-value="nodeCtrl.validateNewNodeName(value)"
  						editable="{{ s.id != nodeCtrl.assumedNode.id }}"
+ 						edit-after-creation="{{s.id == -1}}"
  						being-edit="nodeCtrl.editingStart(s)">
  				</edit-node-in-place>
  				<span class="node-button" >
  					<div class="addDeledBtn">
-                        <button class="btn-node btn-node-add" ng-click="nodeCtrl.createNewChildNodeForUserToEdit(s)">+</button>
-                        <button class="btn-node btn-node-add" ng-click="nodeCtrl.deleteNode(s)" ng-show="!s.isRootNode"> - </button>
+                        <button class="btn-node btn-node-add" title="add" ng-click="nodeCtrl.createNewChildNodeForUserToEdit(s)">+</button>
+                        <button class="btn-node btn-node-del" title="delete" ng-click="nodeCtrl.deleteNode(s)" ng-show="!s.isRootNode"> - </button>
                      </div>
                 </span>
  				</div>
