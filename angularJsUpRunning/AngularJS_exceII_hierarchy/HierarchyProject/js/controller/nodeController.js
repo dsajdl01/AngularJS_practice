@@ -5,23 +5,33 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 			self.commonNodeHeirarchyModel = commonNodeHeirarchyModel;
 			var userSelectedNodeDetails;
 			var parentNode = {};
+			var highestId = self.commonNodeHeirarchyModel.selectedTopNode.id;
 			self.assumedNode = "";
 			self.init = function(){
 				self.assumedNode = self.commonNodeHeirarchyModel.selectedTopNode;
+				setHighestId(self.commonNodeHeirarchyModel.rootNode[0]);
 				initializeViewVariables(self.commonNodeHeirarchyModel.userSelectedNode, getNodesDetails(self.commonNodeHeirarchyModel.userSelectedNode.id))
 			}
 
+			self.deleteNode = function(nodeToDelete) {
+				console.log("delening node: ", nodeToDelete);
+				//some code here
+			}
+
+			self.createNewChildNodeForUserToEdit = function(parent){
+				var newNode = {"name": "", "id": -1, "parentsId": parent.id, "child": [] };
+				parent.child.push(newNode);
+			}
+
 			self.editingStart = function(node){
-				console.log("EditingStart node: ", node);
 				self.commonNodeHeirarchyModel.editingNode = node;
 
 			}
 
 			self.validateNewNodeName = function(newNodeName){
-				setParentNodeById( self.commonNodeHeirarchyModel.rootNode[0], self.commonNodeHeirarchyModel.userSelectedNode.parentsId);
 				
 				if(newNodeName.length == 0){
-					return {valid:false, message: "Please supply a name"}
+					return {valid:false, message: " Please supply a name"};
 				}
 
 				if(newNodeName == self.commonNodeHeirarchyModel.userSelectedNode.name){
@@ -30,21 +40,23 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 				
 				var invalidChar = "\\/|:;,.<>";
 				if(new RegExp("^.*[" + invalidChar + "].*$").test(newNodeName)){
-					return {valid:false, message: "Cannot contain characters: " + invalidChar};
+					return {valid:false, message: " Cannot contain characters: " + invalidChar.split("").join("  ")};
 				}
 
 				if(siblingExistWithSameName(newNodeName)){
-					return {valid:false, message:"The name is already in use"};
+					return {valid:false, message:" The name is already in use"};
 				}
 
 				return {valid:true, message:""};
 			}
 
 			var siblingExistWithSameName = function(newName){
+				var parentsId = (self.commonNodeHeirarchyModel.userSelectedNode.parentsId == null)? self.commonNodeHeirarchyModel.editingNode.parentsId : self.commonNodeHeirarchyModel.userSelectedNode.parentsId;
+				setParentNodeById( self.commonNodeHeirarchyModel.rootNode[0], parentsId);
 				if(parentNode){
 					if(parentNode.child){
 						for(var i = 0; i < parentNode.child.length; i++){
-							if(parentNode.child[i].name == newName){
+							if(parentNode.child[i].name == newName) {
 								return true;
 							}
 						}
@@ -53,7 +65,16 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 				return false;
 			}
 
-			var setParentNodeById = function(nodes, nodeId){
+			var setHighestId = function(nodes){
+				if(highestId < nodes.id){
+					highestId = nodes.id;
+				}
+				for(var i = 0; i < nodes.child.length; i++){
+					setHighestId(nodes.child[i]);
+				}
+			}
+
+			var setParentNodeById = function(nodes, nodeId) {
 				for(var i = 0; i < nodes.child.length; i++){
 					setParentNodeById(nodes.child[i], nodeId);
 					if(nodes.id == nodeId) {
@@ -65,10 +86,28 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 
 
 			self.updateSelectedNodeName = function(newName){
-				console.log("updateSelectedNodeName: ", newName);
-				self.commonNodeHeirarchyModel.editingNode.name = newName;
-				self.commonNodeHeirarchyModel.userSelectedNode.name = newName;
-				initializeViewVariables(self.commonNodeHeirarchyModel.userSelectedNode, getNodesDetails(self.commonNodeHeirarchyModel.userSelectedNode.id));
+				if(self.commonNodeHeirarchyModel.editingNode.id == -1){
+					highestId ++;
+					var nodeDetails = {"id": highestId, "dob": "", "start": getCurrentDate() ,"possition": "Not defined","comments": "N/A"};
+					self.commonNodeHeirarchyModel.nodesDetails.push(nodeDetails);
+					self.commonNodeHeirarchyModel.editingNode.id = highestId;
+					self.commonNodeHeirarchyModel.editingNode.name = newName;
+				} else 
+				{
+					self.commonNodeHeirarchyModel.editingNode.name = newName;
+					self.commonNodeHeirarchyModel.userSelectedNode.name = newName;
+					initializeViewVariables(self.commonNodeHeirarchyModel.userSelectedNode, getNodesDetails(self.commonNodeHeirarchyModel.userSelectedNode.id));
+				}
+			}
+
+			var getCurrentDate = function(){
+				var d = new Date();
+   		     	var month = '' + (d.getMonth() + 1);
+        		var day = '' + d.getDate();
+        		var year = d.getFullYear();
+        		if (month.length < 2) month = '0' + month;
+    			if (day.length < 2) day = '0' + day;
+        		return day+"/"+month+"/"+year;
 			}
 
 			self.userSelectedNode = function(node){
@@ -77,7 +116,6 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 			};		
 			
 			var initializeViewVariables = function(node, details){
-				console.log("aditable: ", self.assumedNode.name, " <and> ", self.assumedNode.id);
 				self.titleOfNode = node.name;
 				self.numberOfChild = getChildMessage(node);
 				self.profesionInfo = getProfesionMessage(node, details);
