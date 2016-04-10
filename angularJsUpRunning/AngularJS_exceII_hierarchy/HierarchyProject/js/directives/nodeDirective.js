@@ -8,6 +8,7 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
           isSelectedCondition: '@',
           validateValue: '&',
           editable: '@',
+          editAfterCreation: '@',
           beingEdit: '&'
     	},
     	templateUrl: 'js/views/accounts.html',
@@ -62,7 +63,7 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
         $scope.fireEditing = function(event)
             {
                 var validInput = validateInput();
-                console.log("valInput: ", validateInput);
+
                 if(event.keyCode === 13) {
                     if (!validInput.valid) {
                         event.preventDefault();
@@ -94,6 +95,15 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
           cancelEditingEvent(event)
           $scope.value = originalNodeValue;
         }
+
+        $scope.init = function(){
+          if($scope.editAfterCreation === 'true'){
+            $scope.modifiedNodeName();
+            validateInput();
+          }
+        }
+
+        $scope.init();
     	}
 	};
     
