@@ -94,6 +94,7 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
           $scope.valid = true;
           cancelEditingEvent(event)
           $scope.value = originalNodeValue;
+          $scope.update({newName: $scope.value});
         }
 
         $scope.init = function(){
