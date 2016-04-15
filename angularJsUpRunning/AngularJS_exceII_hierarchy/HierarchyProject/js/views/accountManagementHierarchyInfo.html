@@ -31,14 +31,14 @@
 			<ul class="nodeListName">
                 <li class="node-list" ng-repeat="s in [nodeCtrl.assumedNode]" ng-include="'tree_template.html'"></li>
             </ul>
-        </div>
-	</div>
+        </div> <!-- end of thge container col-md-4 -->
+	</div> <!-- end of the left container -->
 
 		<div class="rightContainer">
 				<h4 class="accountSelectedTitle">Selected Node {{nodeCtrl.titleOfNode}}</h4>
 				<div bs-tabs nav-class="nav nav-tabs noselect">
+
 	                <div bs-pane title="Account Info">
-	                    <!-- ng-init="ctrl.initialise()" -->
 	                    <div title="">
 	                        <br />
 	                        <div class="row" title="">
@@ -48,9 +48,9 @@
 	                            </div>
 	                        </div>
 	                    </div>
-                	</div>
+                	</div>  <!-- end of the Account info pane -->
+
                 	<div bs-pane title="Account Details">
-	                    <!-- ng-init="ctrl.initialise()" -->
 	                    <div title="">
 	                        <br />
 	                        <div class="row" title="">
@@ -61,16 +61,16 @@
 	                            </div>
 	                        </div>
 	                    </div>
-                	</div>
-                	<div bs-pane title="Settings">
-	                    <!-- ng-init="ctrl.initialise()" -->
+                	</div> <!-- end of the Account details pane -->
+
+                	<div bs-pane title="Settings" ng-controller="formController as formCtrl" ng-init="formCtrl.init()">
 	                    <div title="">
 	                        <br />
 	                        <div class="row" title="">
-<!-- 	                            <div class="col-md-7"> -->
 	                            <div class="formText"><strong>Modified Nodes Details:</strong> modification will override current text and it will be available to particular employee.</div>
 	                             <div class="formContainer">
-	                               	<form role="form" name="form" novalidate ng-submit="nodeCtrl.save()">
+
+	                               	<form role="form" name="form" novalidate ng-submit="formCtrl.save()">
 										<div class="form-group">
 											<div class="row">
 												<div class="startDay" >
@@ -80,11 +80,10 @@
 													   id="st"
 													   name="ST"
 													   maxlength="10"
-													   ng-change="nodeCtrl.startChange()"
 													   placeholder="dd/mm/yyyy"
 													   autocomplete="off"
 													   autofocus
-													   ng-model="nodeCtrl.startDay"
+													   ng-model="formCtrl.startDay"
 													   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"/>
 												</div>
 
@@ -95,11 +94,10 @@
 													   id="position"
 													   name="ST"
 													   maxlength="225"
-													   ng-change="nodeCtrl.positionChange()"
 													   placeholder="Employee profession"
 													   autocomplete="off"
 													   autofocus
-													   ng-model="nodeCtrl.position"
+													   ng-model="formCtrl.position"
 													   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"/>
 												</div>
 											
@@ -111,22 +109,22 @@
 													   id="comment"
 													   name="COMMENT"
 													   maxlength="1884"
-													   ng-change="nodeCtrl.commentChange()"
 													   placeholder="Node about employee:"
 													   autocomplete="off"
 													   autofocus
-													   ng-model="nodeCtrl.comment"
+													   ng-model="formCtrl.comment"
 													   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"></textarea>
 													</div>
-													<button class="btnSave" type="button" ng-click="nodeCtrl.save()">Save</button>
+													<button class="btnSave" type="button" ng-click="formCtrl.save()">Save</button>
 												</div>
-											</div>
-										</form>
-									</div>
-	                            </div>
-	                        </div>
-<!-- 	                    </div> -->
-                	</div>
-                </div>	
-		</div>
+											</div> <!-- end of the row -->
+										</div> <!-- enf of the form group -->
+									</form>
+
+									</div> <!-- end of the formContainer -->
+	                            </div> <!-- end of the row -->
+	                        </div> <!-- end of the title  -->
+                	</div> <!-- end of the setting pane -->
+                </div>	<!-- end of the 'nav nav-tabs noselect' class -->
+		</div> <!-- end of the right container -->
 </div>
