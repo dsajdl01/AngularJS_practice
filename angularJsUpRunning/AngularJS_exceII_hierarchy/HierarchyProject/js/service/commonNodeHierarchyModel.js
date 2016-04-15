@@ -7,7 +7,7 @@ function commonNodeHeirarchyModel(){
 	self.rootNode = {};
 	self.nodesDetails = {};
 	self.selectedTopNode =  {};
-	self.allNodesDetails = {};
+	self.allNodesDetails =[];
 	self.userSelectedNode = {};
 	self.editingNode = {};
 }

@@ -39,6 +39,7 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 			modalDialogBoxService.shareModalData = {
 				pathToEachNode: path
 			};
+
 			modalDialogBoxService.notify = function(selectedPath) {
 				console.log("fff", selectedPath);
 				if(!selectedPath){
@@ -55,7 +56,6 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 
 		self.displayAboutDialogBox = function(){
 			modalDialogBoxService.setTemplate("js/views/aboutTemplate.html");
-			modalDialogBoxService.shareModalData = {};	
 			modalDialogBoxService.showDialog();
 		};
 
