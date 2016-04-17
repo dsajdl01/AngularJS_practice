@@ -1,4 +1,4 @@
-#myMngtHierarchyApp.controller('formController', [ 'commonNodeHeirarchyModel', 'mngtHierarchyNodeServiceProvider', '$scope', 'toaster',
+myMngtHierarchyApp.controller('formController', [ 'commonNodeHeirarchyModel', 'mngtHierarchyNodeServiceProvider', '$scope', 'toaster',
 	function(commonNodeHeirarchyModel, mngtHierarchyNodeServiceProvider, $scope, toaster){
 
 		var self = this; 

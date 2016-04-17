@@ -16,16 +16,18 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 		self.showPage = false;
 		self.isTopNavigationBtnDisabled = false;
 		relocatePageToHomePage();
-		mngtHierarchyNodeServiceProvider.loadTopNode(function(responce){
-			isNodeLoaded = responce;
-			mngtHierarchyNodeServiceProvider.loadNodeDetails(function(responce){});
-			if(isNodeLoaded)
-			{
-				self.getAssumeIdentityDialogBox();
-			} else 
-			{
-		 		toaster.pop("error","Error occer while app was downloading data.");
-			}
+		mngtHierarchyNodeServiceProvider.loadTopNode(function(loadResponce){
+			isNodeLoaded = loadResponce;
+			mngtHierarchyNodeServiceProvider.loadNodeDetails(function(detailsResponce){
+				isNodeLoaded = detailsResponce;
+				if( isNodeLoaded )
+				{
+					self.getAssumeIdentityDialogBox();
+				} else
+				{
+		 			toaster.pop("error","Error occer while app was downloading data.");
+				}
+			});
 		});
 	};
 
