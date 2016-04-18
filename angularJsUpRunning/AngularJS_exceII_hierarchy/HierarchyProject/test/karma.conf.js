@@ -27,13 +27,9 @@ module.exports = function(config) {
       'vendor/angular-strap/dist/angular-strap.tpl.js',
       'vendor/angular-ui-utils/ui-utils.js',
       'vendor/angular-ui-select/dist/select.js',
-      
-     
 
       'app.js',
-      'controller/mngtHierarchyController.js',
-      'controller/mngtHierarchyControllerSpec.js' // Load the modules first
-                         // And then the App. After that it's all the other things we are testing:
+      'controller/*.js'
   //    'forms/**/*.js',
    //   'service/**/*.js',
      // 'directives/**/*.js' */
