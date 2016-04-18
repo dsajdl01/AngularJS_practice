@@ -2,7 +2,7 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 					function(mngtHierarchyNodeServiceProvider, commonNodeHeirarchyModel, $location, toaster){
 
 	var self = this;
-	var isNodeLoaded = false;
+	/*var isNodeLoaded = false;*/
 	self.showPage = false;
 	self.isTopNavigationBtnDisabled = false;
 	self.commonNodeHeirarchyModel = commonNodeHeirarchyModel;
@@ -12,26 +12,32 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 	self.init = function()
 	{
 		var isAssumeIdentity = false;
-		isNodeLoaded = false;
+		var isNodeLoaded = false;
 		self.showPage = false;
 		self.isTopNavigationBtnDisabled = false;
 		relocatePageToHomePage();
 		mngtHierarchyNodeServiceProvider.loadTopNode(function(loadResponce){
 			isNodeLoaded = loadResponce;
+			if(!isNodeLoaded)
+			{
+				getPopUpToasterMessage();
+				return;
+			} 
 			mngtHierarchyNodeServiceProvider.loadNodeDetails(function(detailsResponce){
 				isNodeLoaded = detailsResponce;
 				if( isNodeLoaded )
 				{
-					self.getAssumeIdentityDialogBox();
-				} else
-				{
-		 			toaster.pop("error","Error occer while app was downloading data.");
+					self.getAssumeIdentityDialogBox(isNodeLoaded);
 				}
-			});
+				else
+				{
+					getPopUpToasterMessage();
+				}
+			});		
 		});
 	};
 
-	self.getAssumeIdentityDialogBox = function()
+	self.getAssumeIdentityDialogBox = function(isNodeLoaded)
 	{	
 		var nodes  = getAllPathToEachNode(commonNodeHeirarchyModel.rootNode[0], "", []);
 			nodes.unshift("[Assume Identity]");
@@ -44,9 +50,9 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 				} else
 				{
 					self.isTopNavigationBtnDisabled = true;
-					self.accountTitle = "Profile of " +selectedNodeName;
+					self.accountTitle = "Profile of " + selectedNodeName;
 				}
-				isAssumeIdentity = true;
+				isAssumeIdentity = !!selectedNodeName;
 				canPageBeDisplayed(isNodeLoaded, isAssumeIdentity);
 			});
 	};
@@ -54,13 +60,18 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 	self.loadPage = function()
 	{
 		self.showPage = false;
-		self.getAssumeIdentityDialogBox();
+		self.getAssumeIdentityDialogBox(true);
 	};
 
 	self.displayAboutDialog = function() 
 	{
 		mngtHierarchyNodeServiceProvider.displayAboutDialogBox();
 	};
+
+	var getPopUpToasterMessage = function()
+	{
+		toaster.pop("error","Error occer while app was downloading data.");
+	}
 
 	var getAllPathToEachNode = function(nodes, pathToParent, allPath)
 	{
