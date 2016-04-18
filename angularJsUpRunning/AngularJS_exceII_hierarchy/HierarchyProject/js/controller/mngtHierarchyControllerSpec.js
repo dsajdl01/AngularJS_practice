@@ -28,10 +28,12 @@ describe('Controller: mngtHierarchyController', function() {
 					}]
 			}]
 
-	beforeEach(module(function($provide) {
-
-		mockMngtHierarchyProvider = {
+	beforeEach(module(function($provide)
+	{
+		mockMngtHierarchyProvider = 
+		{
 			isFirstNaneSelected: true,
+			isSubNode: true,
 			selNodeSucceed: true,
 			loadSucceed: true,
 			detailsSuccesd: true,
@@ -46,27 +48,39 @@ describe('Controller: mngtHierarchyController', function() {
 			},
 			displayAssumeDialogBox: function(path, selectedNodeName){
 				if(this.selNodeSucceed){
+					if(this.isSubNode){
+						if(this.isFirstNaneSelected){
+							selectedNodeName("Bob");
+						} else {
+							selectedNodeName("Fred");
+						}
+					} else {
 						if(this.isFirstNaneSelected){
 							selectedNodeName("Sandra");
 						} else {
 							selectedNodeName("David");
 						}
+					}
 				} else {
 					selectedNodeName(false);
 				}
-			}
+			},
+			displayAboutDialogBox: function(){}
 		};
 
-		mockCommonNodeHeirarchyModel = {
+		mockCommonNodeHeirarchyModel = 
+		{
 			rootNode: node,
 			allNodesDetails: []
 		};
 
-		mockLocation = {
+		mockLocation = 
+		{
 			path: function(path) {}
 		};
 
-		mockToaster = {
+		mockToaster = 
+		{
 			pop: function(error,message, option) {}
 		};
 
@@ -74,19 +88,21 @@ describe('Controller: mngtHierarchyController', function() {
 		$provide.value("commonNodeHeirarchyModel", mockCommonNodeHeirarchyModel);
 		$provide.value("$location", mockLocation);
 		$provide.value("toaster", mockToaster);
-
 	}));
 
-	beforeEach(inject(function($controller) {
+	beforeEach(inject(function($controller)
+	{
         ctrl = $controller('mngtHierarchyController');
     }));
 
-    it('should be defined', function() {
+    it('should be defined - Controller', function()
+    {
         expect(ctrl).toBeDefined();
     });
 
-    it('should load top hierarchy node when init() is called and get call assume identity box where sub-node is selected', function(){
-
+    it('should load top hierarchy node when init() is called and get call assume identity box where sub-node is selected', function()
+    {
+    	mockMngtHierarchyProvider.isSubNode = false;
     	mockMngtHierarchyProvider.isFirstNaneSelected = true;
     	mockMngtHierarchyProvider.selNodeSucceed = true;
     	mockMngtHierarchyProvider.loadSucceed = true;
@@ -94,10 +110,11 @@ describe('Controller: mngtHierarchyController', function() {
 
     	expect(ctrl.showPage).toBeFalsy();
     	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
-    	expect(ctrl.accountTitle).toBeUndefined
+    	expect(ctrl.accountTitle).toBeUndefined;
 
     	spyOn(mockMngtHierarchyProvider, 'loadTopNode').and.callThrough();
     	spyOn(mockMngtHierarchyProvider, 'loadNodeDetails').and.callThrough();
+    	spyOn(mockMngtHierarchyProvider, 'displayAssumeDialogBox').and.callThrough();
 
     	ctrl.init();
 
@@ -106,8 +123,9 @@ describe('Controller: mngtHierarchyController', function() {
     	expect(ctrl.accountTitle).toEqual("Profile of Sandra");
     });
 
-    it('should load top hierarchy node when init() is called and get call assume identity box where top node is selected', function(){
-
+    it('should load top hierarchy node when init() is called and get call assume identity box where top node is selected', function()
+    {
+    	mockMngtHierarchyProvider.isSubNode = false;
     	mockMngtHierarchyProvider.isFirstNaneSelected = false;
     	mockMngtHierarchyProvider.selNodeSucceed = true;
     	mockMngtHierarchyProvider.loadSucceed = true;
@@ -119,6 +137,7 @@ describe('Controller: mngtHierarchyController', function() {
 
     	spyOn(mockMngtHierarchyProvider, 'loadTopNode').and.callThrough();
     	spyOn(mockMngtHierarchyProvider, 'loadNodeDetails').and.callThrough();
+    	spyOn(mockMngtHierarchyProvider, 'displayAssumeDialogBox').and.callThrough();
 
     	ctrl.init();
 
@@ -127,6 +146,77 @@ describe('Controller: mngtHierarchyController', function() {
     	expect(ctrl.accountTitle).toEqual("Profile of David");
     });
 
+    it('should pop up toaster message when loadTopNode() fail to load data', function()
+    {
+    	mockMngtHierarchyProvider.loadSucceed = false;
+    	spyOn(mockMngtHierarchyProvider, 'loadTopNode').and.callThrough();
 
+    	ctrl.init();
 
+    	spyOn(mockToaster, 'pop');
+    	expect(ctrl.showPage).toBeFalsy();
+    	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
+    	expect(ctrl.accountTitle).toBeUndefined;
+
+    });
+
+    it('should pop up toaster message when loadNodeDetails() falil to load data', function()
+    {
+    	mockMngtHierarchyProvider.loadSucceed = true;
+    	mockMngtHierarchyProvider.detailsSuccesd = false;
+
+    	spyOn(mockMngtHierarchyProvider, 'loadTopNode').and.callThrough();
+    	spyOn(mockMngtHierarchyProvider, 'loadNodeDetails').and.callThrough();
+
+    	spyOn(mockToaster, 'pop');
+    	expect(ctrl.showPage).toBeFalsy();
+    	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
+    	expect(ctrl.accountTitle).toBeUndefined;
+    });
+
+    it('should assume identity as bob when getAssumeIdentityDialogBox is displayed and user select bob', function()
+    {
+    	mockMngtHierarchyProvider.selNodeSucceed = true;
+		mockMngtHierarchyProvider.isSubNode = true;
+		mockMngtHierarchyProvider.isFirstNaneSelected = true;
+
+		spyOn(mockMngtHierarchyProvider, 'displayAssumeDialogBox').and.callThrough();
+		ctrl.getAssumeIdentityDialogBox(true);
+
+		expect(ctrl.showPage).toBeTruthy();
+    	expect(ctrl.isTopNavigationBtnDisabled).toBeTruthy();
+    	expect(ctrl.accountTitle).toEqual("Profile of Bob");
+    });
+
+    it('should disable top navigation btn when getAssumeIdentityDialogBox is closed by user', function()
+    {
+    	mockMngtHierarchyProvider.selNodeSucceed = false;
+
+    	spyOn(mockMngtHierarchyProvider, 'displayAssumeDialogBox').and.callThrough();
+		ctrl.getAssumeIdentityDialogBox(true);
+
+		expect(ctrl.showPage).toBeFalsy();
+    	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
+    	expect(ctrl.accountTitle).toEqual("");
+    });
+
+    it('should call getAssumeIdentityDialogBox when loadPage() is call and display title Fred if the user select Fred', function()
+    {
+    	mockMngtHierarchyProvider.selNodeSucceed = true;
+		mockMngtHierarchyProvider.isSubNode = true;
+		mockMngtHierarchyProvider.isFirstNaneSelected = false;
+
+		spyOn(mockMngtHierarchyProvider, 'displayAssumeDialogBox').and.callThrough();
+		ctrl.loadPage();
+
+		expect(ctrl.showPage).toBeTruthy();
+    	expect(ctrl.isTopNavigationBtnDisabled).toBeTruthy();
+    	expect(ctrl.accountTitle).toEqual("Profile of Fred");
+    });
+
+    it('should call display about dialog box when displayAboutDialog is called', function()
+    {
+    	spyOn(mockMngtHierarchyProvider, 'displayAboutDialogBox');
+    	ctrl.displayAboutDialog();
+    });
 });
