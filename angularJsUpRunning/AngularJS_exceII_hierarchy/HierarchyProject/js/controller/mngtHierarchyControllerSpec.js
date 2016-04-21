@@ -2,7 +2,7 @@ describe('Controller: mngtHierarchyController', function() {
 
 	beforeEach(module('myMngtHierarchyApp'));
 
-	var ctrl, mockMngtHierarchyProvider, mockCommonNodeHeirarchyModel, mockLocation, mockToaster;
+	var ctrl, mockMngtHierarchyProvider, mockCommonNodeHeirarchyModel, mockLocation, mockToaster, mockCalculateTimeService;
 
 
 	var node = [{
@@ -83,7 +83,13 @@ describe('Controller: mngtHierarchyController', function() {
 		{
 			pop: function(error,message, option) {}
 		};
+		mockCalculateTimeService = {
+			getCurrentDate: function(){
+				return "02/04/2016"
+			}
+		};
 
+		$provide.value('calculateTimeService', mockCalculateTimeService);
 		$provide.value("mngtHierarchyNodeServiceProvider", mockMngtHierarchyProvider);
 		$provide.value("commonNodeHeirarchyModel", mockCommonNodeHeirarchyModel);
 		$provide.value("$location", mockLocation);
@@ -98,6 +104,11 @@ describe('Controller: mngtHierarchyController', function() {
     it('should be defined - Controller', function()
     {
         expect(ctrl).toBeDefined();
+    });
+
+    it('should get date in follow format mm/dd/yyyy', function()
+    {
+    	expect(ctrl.todayDay).toEqual("02/04/2016");
     });
 
     it('should load top hierarchy node when init() is called and get call assume identity box where sub-node is selected', function()
