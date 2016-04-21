@@ -1,13 +1,12 @@
-myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeServiceProvider', 'commonNodeHeirarchyModel', '$location', 'toaster',
-					function(mngtHierarchyNodeServiceProvider, commonNodeHeirarchyModel, $location, toaster){
+myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeServiceProvider', 'commonNodeHeirarchyModel', 'calculateTimeService' ,'$location', 'toaster',
+					function(mngtHierarchyNodeServiceProvider, commonNodeHeirarchyModel, calculateTimeService, $location, toaster){
 
 	var self = this;
-	/*var isNodeLoaded = false;*/
 	self.showPage = false;
 	self.isTopNavigationBtnDisabled = false;
 	self.commonNodeHeirarchyModel = commonNodeHeirarchyModel;
 	self.accountTitle;
-	self.data = new Date();
+	self.todayDay = calculateTimeService.getCurrentDate();
 
 	self.init = function()
 	{
