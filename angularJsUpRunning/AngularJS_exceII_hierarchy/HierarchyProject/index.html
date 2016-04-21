@@ -27,7 +27,7 @@
 					<li><a class="last" href="#/homeViewAccount" ng-click="ctrl.loadPage()" title="Change Node">Change identity </a></li>
 					<li><a class="templateAssumeIdentity" ng-href="#/templateAssumeIdentity"></a></li>
 				</ul>
-				<span class="currentDay"> Today: {{ ctrl.data | date:'dd/MM/yyyy' }}</span>
+				<span class="currentDay"> Today: {{ ctrl.todayDay }}</span>
 				</div>
 			</div>
 				
@@ -64,6 +64,7 @@
 		<script src="js/controller/formController.js"></script>
 		<script src="js/service/hierarchyNodeService.js"></script>
 		<script src="js/service/commonNodeHierarchyModel.js"></script>
+		<script src="js/service/calculateTimeService.js"></script>
 		<script src="js/forms/assumeIdentityController.js"></script>
 		<script src="js/service/mngtHierarchyNodeServiceProvider.js"></script>
 		<script src="js/service/modalDialogBoxService.js"></script>
