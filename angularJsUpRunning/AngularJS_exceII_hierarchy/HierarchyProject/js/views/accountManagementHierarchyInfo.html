@@ -83,6 +83,7 @@
 													   placeholder="dd/mm/yyyy"
 													   autocomplete="off"
 													   autofocus
+													   ng-change="formCtrl.makeChange()"
 													   ng-model="formCtrl.startDay"
 													   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"/>
 												</div>
@@ -97,6 +98,7 @@
 													   placeholder="Employee profession"
 													   autocomplete="off"
 													   autofocus
+													   ng-change="formCtrl.makeChange()"
 													   ng-model="formCtrl.position"
 													   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"/>
 												</div>
@@ -112,10 +114,13 @@
 													   placeholder="Node about employee:"
 													   autocomplete="off"
 													   autofocus
+													   ng-change="formCtrl.makeChange()"
 													   ng-model="formCtrl.comment"
 													   ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"></textarea>
 													</div>
-													<button class="btnSave" type="button" ng-click="formCtrl.save()">Save</button>
+													<button class="btnSave" type="button"
+													ng-disabled="formCtrl.btnSave" title="{{formCtrl.btnName}}"
+													ng-click="formCtrl.save()">{{formCtrl.btnName}}</button>
 												</div>
 											</div> <!-- end of the row -->
 										</div> <!-- enf of the form group -->
