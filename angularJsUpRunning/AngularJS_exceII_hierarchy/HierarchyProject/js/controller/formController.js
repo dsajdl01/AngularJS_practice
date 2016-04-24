@@ -43,7 +43,7 @@ myMngtHierarchyApp.controller('formController', [ 'commonNodeHeirarchyModel', 'm
 			return self.startDay == self.origineStartDay && self.position == self.OriginePosition &&  self.comment == self.OriginComment;
 		}
 
-		self.save = function(newDetails)
+		self.save = function()
 		{
 			for(var i = 0; i < commonNodeHeirarchyModel.nodesDetails.length; i++)
 			{

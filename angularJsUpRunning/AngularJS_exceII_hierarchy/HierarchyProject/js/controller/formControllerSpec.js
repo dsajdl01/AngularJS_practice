@@ -16,7 +16,7 @@ describe('Controller: formController', function() {
 	{
 		commonNodeHeirarchyModelMock = {
 			userSelectedNode: selectedNode,
-			nodesDetails: selectedNode
+			nodesDetails: detailsNode
 		};
 
 		mngtHierarchyProviderMock = {
@@ -56,7 +56,8 @@ describe('Controller: formController', function() {
         expect(ctrl).toBeDefined();
     });
 
-    it('should watch the userSelectedNode and refresh the user list when node changes', function() {
+    it('should watch the userSelectedNode and refresh the user list when node changes', function()
+    {
     	var watchedObject = watchExpressionFunction();
         expect(watchedObject).toBe(commonNodeHeirarchyModelMock.userSelectedNode);
 
@@ -73,7 +74,8 @@ describe('Controller: formController', function() {
 		expect(ctrl.OriginComment).toEqual("Work with smile in our company.");
     });
 
-    it('should watch the userSelectedNode and refresh the user list when node changes', function() {
+    it('should watch the userSelectedNode and refresh the user list when node changes', function()
+    {
     	commonNodeHeirarchyModelMock.userSelectedNode = selectedNode.child[0];
     	var watchedObject = watchExpressionFunction();
         expect(watchedObject).toBe(commonNodeHeirarchyModelMock.userSelectedNode);
@@ -91,7 +93,8 @@ describe('Controller: formController', function() {
 		expect(ctrl.OriginComment).toEqual("Concentrate on AngulaJS, Java and REST Full services.");
     });
 
-    it('should set button visible if values are different and if values get same button is disabled', function(){
+    it('should set button visible if values are different and if values get same button is disabled', function()
+    {
     	commonNodeHeirarchyModelMock.userSelectedNode = selectedNode.child[0];
     	var watchedObject = watchExpressionFunction();
         expect(watchedObject).toBe(commonNodeHeirarchyModelMock.userSelectedNode);
@@ -113,7 +116,37 @@ describe('Controller: formController', function() {
      	expect(ctrl.btnName).toEqual("Save"); 
     });
 
- /*   it('should save details and update origine values when save button is pressed', function(){
+    it('should save details and update origine values when save button is pressed', function()
+    {
+    	var watchedObject = watchExpressionFunction();
+        expect(watchedObject).toBe(commonNodeHeirarchyModelMock.userSelectedNode);
+        // getting selected data.
+     	watchListenerFunction();
+     	expect(ctrl.btnSave).toBeTruthy();
+     	expect(ctrl.btnName).toEqual("Save");
 
-    })*/
+     	expect(ctrl.startDay).toEqual("10/02/2005");
+     	expect(ctrl.position).toEqual("Senior Developer");
+     	expect(ctrl.comment).toEqual("Work with smile in our company.");
+
+     	expect(ctrl.origineStartDay).toEqual("10/02/2005");
+		expect(ctrl.OriginePosition).toEqual("Senior Developer");
+		expect(ctrl.OriginComment).toEqual("Work with smile in our company.");
+
+		// simulating changing data where makeChange() function is executed.
+		ctrl.startDay = "10/02/2005";
+		ctrl.position = "Senior Java Developer";
+		ctrl.comment = "Work with smile and with enthusiasm in our company.";
+		ctrl.makeChange();
+		expect(ctrl.btnSave).toBeFalsy();
+
+		// on save() function is executed when user press button. 
+		ctrl.save();
+		spyOn(toasterMock, 'pop');
+		expect(ctrl.btnSave).toBeTruthy();
+     	expect(ctrl.btnName).toEqual("Done");
+     	expect(ctrl.origineStartDay).toEqual("10/02/2005");
+		expect(ctrl.OriginePosition).toEqual("Senior Java Developer");
+		expect(ctrl.OriginComment).toEqual("Work with smile and with enthusiasm in our company.");
+    });
 });
