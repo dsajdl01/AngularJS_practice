@@ -1,9 +1,8 @@
-myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mngtHierarchyNodeServiceProvider', '$window',
-		function(commonNodeHeirarchyModel, mngtHierarchyNodeServiceProvider, $window){
+myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mngtHierarchyNodeServiceProvider', 'calculateTimeService', '$window',
+		function(commonNodeHeirarchyModel, mngtHierarchyNodeServiceProvider, calculateTimeService, $window){
 
 			var self = this;
 			self.commonNodeHeirarchyModel = commonNodeHeirarchyModel;
-			var userSelectedNodeDetails;
 			var parentNode = {};
 			var highestId = self.commonNodeHeirarchyModel.selectedTopNode.id;
 			self.assumedNode = "";
@@ -21,14 +20,13 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 	        } else {
 	            nodeMessage = "Do you want to delete " + nodeToDelete.name+ "?";
 	        }
-
 	        var ResponceApprove = $window.confirm(nodeMessage);
 	        if(ResponceApprove){
 	           	setNodeTobeRemoved(nodeToDelete.id, nodeToDelete.parentsId);
 	        }
 		}
 
-		var removeNodesFromTree = function(nodeTree, idOfNodesToDelete, parentsId){
+		self.removeNodesFromTree = function(nodeTree, idOfNodesToDelete, parentsId){
 			if(nodeTree.id == parentsId) {
 				for(var i = 0; i < nodeTree.child.length; i++){
 					if(nodeTree.child[i].id == idOfNodesToDelete ){
@@ -36,8 +34,9 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 					}
 				}
 			}
+			console.log('shgdk dsfj dfg');
 			for(var i = 0; i < nodeTree.child.length; i++){
-				removeNodesFromTree(nodeTree.child[i], idOfNodesToDelete, parentsId);
+				self.removeNodesFromTree(nodeTree.child[i], idOfNodesToDelete, parentsId);
 			}
 		}
 
@@ -119,7 +118,7 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 			if(self.commonNodeHeirarchyModel.editingNode.id == -1){
 				highestId ++;
 				if(newName){
-					var nodeDetails = {"id": highestId, "dob": "", "start": getCurrentDate() ,"possition": "Not defined","comments": "N/A"};
+					var nodeDetails = {"id": highestId, "dob": "", "start": calculateTimeService.getCurrentDate() ,"possition": "Not defined","comments": "N/A"};
 					self.commonNodeHeirarchyModel.nodesDetails.push(nodeDetails);
 					self.commonNodeHeirarchyModel.editingNode.id = highestId;
 					self.commonNodeHeirarchyModel.editingNode.name = newName;
@@ -132,16 +131,6 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 			}
 		}
 
-		var getCurrentDate = function(){
-			var d = new Date();
-   		   	var month = '' + (d.getMonth() + 1);
-			var day = '' + d.getDate();
-			var year = d.getFullYear();
-			if (month.length < 2) month = '0' + month;
-			if (day.length < 2) day = '0' + day;
-			return day+"/"+month+"/"+year;
-		};
-
 		self.userSelectedNode = function(node){
 			self.commonNodeHeirarchyModel.userSelectedNode = node;
 			initializeViewVariables(node, getNodesDetails(node.id));
@@ -149,8 +138,8 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 
 		var setNodeTobeRemoved = function(nodeId, parentsId){
 			setParentNodeById(self.commonNodeHeirarchyModel.rootNode[0], parentsId)
-		    removeNodesFromTree(self.commonNodeHeirarchyModel.selectedTopNode, nodeId, parentsId);
-	        removeNodesFromTree(self.commonNodeHeirarchyModel.rootNode[0], nodeId, parentsId);
+		    self.removeNodesFromTree(self.commonNodeHeirarchyModel.selectedTopNode, nodeId, parentsId);
+	        self.removeNodesFromTree(self.commonNodeHeirarchyModel.rootNode[0], nodeId, parentsId);
 	    }
 
 		var initializeViewVariables = function(node, details) {
