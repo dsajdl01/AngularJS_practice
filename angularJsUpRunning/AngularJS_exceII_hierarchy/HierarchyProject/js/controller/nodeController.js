@@ -34,7 +34,6 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 					}
 				}
 			}
-			console.log('shgdk dsfj dfg');
 			for(var i = 0; i < nodeTree.child.length; i++){
 				self.removeNodesFromTree(nodeTree.child[i], idOfNodesToDelete, parentsId);
 			}
@@ -75,7 +74,7 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 			}
 
 			if(siblingExistWithSameName(newNodeName)){
-				return {valid:false, message:" The name is already in use"};
+				return {valid:false, message:" The name is already in used"};
 			}
 			return {valid:true, message:""};
 		}
