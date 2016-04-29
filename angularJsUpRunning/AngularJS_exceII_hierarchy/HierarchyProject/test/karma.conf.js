@@ -29,10 +29,9 @@ module.exports = function(config) {
       'vendor/angular-ui-select/dist/select.js',
 
       'app.js',
-      'controller/*.js'
-  //    'forms/**/*.js',
-   //   'service/**/*.js',
-     // 'directives/**/*.js' */
+      'controller/*.js',
+      'directives/*.js',
+      'service/*.js'
     ],
 
 
