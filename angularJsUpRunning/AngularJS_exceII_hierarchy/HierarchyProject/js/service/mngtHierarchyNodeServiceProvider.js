@@ -35,7 +35,7 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 
 		self.displayAssumeDialogBox = function( path, callBack ){
 
-			modalDialogBoxService.setTemplate("js/forms/assumeIdentityTemplate.html");
+			modalDialogBoxService.setTemplate("js/views/assumeIdentityTemplate.html");
 			modalDialogBoxService.shareModalData = {
 				pathToEachNode: path
 			};
