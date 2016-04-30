@@ -22,8 +22,12 @@ function calculateTimeService(){
 		var day   = getDay(format);
     	var month  = getMonth(format);
    	 	var year   = getYear(format);
+   	 	var currentYear = new Date().getFullYear();
+   	 	if(year > currentYear){
+			throw  "Starting year cannot be greater that current year!";
+		}
    	 	var daysToCurerntDate = calculateDaysFromGivenDayToCurrentDay( new Date(year, month-1, day));
-   	 	var yearsDay = calculateDaysFromGivenYeatToThisYear(year, new Date().getFullYear(), yearsWorking);
+   	 	var yearsDay = calculateDaysFromGivenYeatToThisYear(year, currentYear , yearsWorking, month, new Date().getMonth()+1);
    	 	return daysToCurerntDate - yearsDay;
 	};
 
@@ -41,17 +45,16 @@ function calculateTimeService(){
     	return Math.ceil(timeDiff / (1000 * 3600 * 24)); 
 	}
 
-	var calculateDaysFromGivenYeatToThisYear = function(startYear, currentYear, yearsWorking)
+	var calculateDaysFromGivenYeatToThisYear = function(startYear, currentYear, yearsWorking, month, currentMonths)
 	{
-		if(startYear > currentYear){
-			throw "Start year cannot be greater that current year!";
-		}
 		var leapYearDays = 0;
 		for(var i = startYear; i <= currentYear; i++){
 			if(leapYear(i)){
 				leapYearDays++;
 			}
 		}
+		if(month <= 2 && leapYear(currentYear) && currentMonths <= 2 && (leapYear(startYear)) ) leapYearDays --;
+		else if(leapYear(currentYear) && currentMonths > 2 && month > 2 && (leapYear(startYear))) leapYearDays--;
 		return (yearsWorking * 365) + leapYearDays;
 	}
 
