@@ -26,7 +26,7 @@ describe('Controller: mngtHierarchyController', function() {
 						"parentsId": 100,
 						"child": []
 					}]
-			}]
+			}];
 
 	beforeEach(module(function($provide)
 	{
