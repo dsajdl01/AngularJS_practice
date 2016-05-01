@@ -7,7 +7,8 @@ myMngtHierarchyApp.factory('mngtHierarchyNodeServiceProvider',
 function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirarchyModel, modalDialogBoxService){
 		var self = this;
 	
-		self.loadTopNode = function(callBack){
+		self.loadTopNode = function(callBack)
+		{
 			hierarchyNodeService.getSelectedNode(
 			 	function(rootNode){
 			 		commonNodeHeirarchyModel.rootNode = rootNode;
@@ -20,7 +21,8 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 			);
 		};
 		
-		self.loadNodeDetails = function(callback){
+		self.loadNodeDetails = function(callback)
+		{
 			hierarchyNodeService.getNodesDetails(
 				function(nodesDetails){
 			 		commonNodeHeirarchyModel.nodesDetails = nodesDetails;
@@ -33,14 +35,15 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 			);
 		}
 
-		self.displayAssumeDialogBox = function( path, callBack ){
-
+		self.displayAssumeDialogBox = function( path, callBack )
+		{
 			modalDialogBoxService.setTemplate("js/views/assumeIdentityTemplate.html");
 			modalDialogBoxService.shareModalData = {
 				pathToEachNode: path
 			};
 
-			modalDialogBoxService.notify = function(selectedPath) {
+			modalDialogBoxService.notify = function(selectedPath)
+			{
 				console.log("fff", selectedPath);
 				if(!selectedPath){
 					callBack(selectedPath);
@@ -54,12 +57,14 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 			modalDialogBoxService.showDialog();
 		};
 
-		self.displayAboutDialogBox = function(){
+		self.displayAboutDialogBox = function()
+		{
 			modalDialogBoxService.setTemplate("js/views/aboutTemplate.html");
 			modalDialogBoxService.showDialog();
 		};
 
-		self.getSelectedNodeDetails = function(selectedNodeId) {
+		self.getSelectedNodeDetails = function(selectedNodeId)
+		{
 			for(var i = 0; i < commonNodeHeirarchyModel.nodesDetails.length; i++){
 				if(commonNodeHeirarchyModel.nodesDetails[i].id == selectedNodeId){
 					return commonNodeHeirarchyModel.nodesDetails[i];
@@ -68,13 +73,15 @@ function mngtHierarchyNodeServiceProvider(hierarchyNodeService, commonNodeHeirar
 			return null;
 		};
 
-		var getSelectedNodeName = function(selectedPath){
+		var getSelectedNodeName = function(selectedPath)
+		{
 			var nodeName = selectedPath.split(">");
 			return nodeName[nodeName.length - 1];
 		}
 
 
-		var saveSelectedNode = function(selectedPath){
+		var saveSelectedNode = function(selectedPath)
+		{
 			for(var i = 0; i < commonNodeHeirarchyModel.allNodesDetails.length; i++){
 				if(commonNodeHeirarchyModel.allNodesDetails[i].pathToNode == selectedPath){
 					commonNodeHeirarchyModel.selectedTopNode = commonNodeHeirarchyModel.allNodesDetails[i];
