@@ -9,30 +9,35 @@ function modalDialogBoxService($modal){
 	 	show: false
 	 };
 
-	 self.setTemplate = function(template){
+	 self.setTemplate = function(template)
+	 {
 	 	self.modalData.templateUrl = template;
 	 };
 
 	 self.notify = function(someObject) {};
-	 self.shareModalData = {};
-	 self.modalInstance = null
 
-	 self.showDialog = function(){
+	 self.shareModalData = {};
+
+	 self.modalInstance = null;
+
+	 self.showDialog = function()
+	 {
 	 	if(!self.modalData.templateUrl){
 	 		throw "No template set for modal dialog";
 	 	}
 
 	 	self.modalInstance = $modal(self.modalData);
-
 	 	self.modalInstance.$promise.then(self.modalInstance.show);
 	 };
 
-	 self.hideDialog = function(){
+	 self.hideDialog = function()
+	 {
 	 	self.modalInstance.hide();
 	 }
 
-	 self.notifyAndHide = function(object){
+	 self.notifyAndHide = function(object)
+	 {
 	 	self.notify(object);
 	 	self.hideDialog();
 	 };
-}
+};
