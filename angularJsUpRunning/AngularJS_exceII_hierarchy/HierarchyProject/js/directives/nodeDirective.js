@@ -13,7 +13,8 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
     	},
     	templateUrl: 'js/views/accounts.html',
 
-    	link: function ( $scope, $element, attrs ){
+    	link: function ( $scope, $element, attrs )
+      {
 
         var originalNodeValue, savingValue = false;
       
@@ -21,91 +22,106 @@ myMngtHierarchyApp.directive( 'editNodeInPlace', function() {
 
         $scope.valid = true;
 
-    		$scope.selectedNode = function(){
+    		$scope.selectedNode = function()
+        {
     			$scope.select();
     		};
 
-    		$scope.getSelectedClass = function() {
+    		$scope.getSelectedClass = function()
+        {
             return  isSelected() ? "selected" : "";
         };
 
-        $scope.modifiedNodeName = function(){
-          if(isEditable()) {
+        $scope.modifiedNodeName = function()
+        {
+          if(isEditable())
+          {
             savingValue = false;
             originalNodeValue = $scope.value;
             $element.addClass('active');
             inputElement[0].focus();
             $scope.beingEdit();
           }
-        }
+        };
 
-        $scope.fireBlurred = function(){
-          cancelEditing();
-        }
+        $scope.fireBlurred = function()
+        {
+            cancelEditing();
+        };
 
-        var isEditable = function(){
-          return $scope.editable === 'true';
-        }
+        var isEditable = function()
+        {
+            return $scope.editable === 'true';
+        };
 
         var validateInput = function(){
             var validatedResult = $scope.validateValue({value: $scope.value});
-            if(validatedResult.value){
+            if(validatedResult.value)
+            {
               $scope.errorMessage = "";
               $scope.valid = true;
             }
-            else {
+            else 
+            {
               $scope.errorMessage = validatedResult.message;
               $scope.valid = validatedResult.valid;
             }
             return validatedResult;
-        }
+        };
 
         $scope.fireEditing = function(event)
+        {
+            var validInput = validateInput();
+
+            if(event.keyCode === 13)
             {
-                var validInput = validateInput();
-
-                if(event.keyCode === 13) {
-                    if (!validInput.valid) {
-                        event.preventDefault();
-                        return;
-                    }
-                    cancelEditingEvent(event);
-                    originalNodeValue = $scope.value;
-                    $scope.update({newName: $scope.value});
+                if(!validInput.valid) {
+                    event.preventDefault();
+                    return;
                 }
-                else if(event.keyCode === 27){
-                    cancelEditing(event);
-                }
-            };
+                
+                cancelEditingEvent(event);
+                originalNodeValue = $scope.value;
+                $scope.update({newName: $scope.value});
+            }
+            else if(event.keyCode === 27)
+            {
+                cancelEditing(event);
+            }
+        };
 
-        var isSelected = function() {
+        var isSelected = function()
+        {
             return $scope.isSelectedCondition === "true";
         };
 
-        var cancelEditingEvent = function(event){
+        var cancelEditingEvent = function(event)
+        {
           savingValue = false;
-          if (angular.isDefined(event)) {
+          if (angular.isDefined(event))
+          {
               event.preventDefault();
-            }
+          }
+          
           $element.removeClass('active');
-        }
+        };
 
-        var cancelEditing = function(event){
+        var cancelEditing = function(event)
+        {
           $scope.valid = true;
-          cancelEditingEvent(event)
+          cancelEditingEvent(event);
           $scope.value = originalNodeValue;
           $scope.update({newName: $scope.value});
-        }
+        };
 
         $scope.init = function(){
-          if($scope.editAfterCreation === 'true'){
+          if($scope.editAfterCreation === 'true')
+          {
             $scope.modifiedNodeName();
             validateInput();
           }
-        }
-
+        };
         $scope.init();
-    	}
-	};
-    
+    }
+	}; 
 });
