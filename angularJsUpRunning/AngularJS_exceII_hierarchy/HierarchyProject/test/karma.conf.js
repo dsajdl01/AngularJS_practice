@@ -46,6 +46,20 @@ module.exports = function(config) {
     exclude: [
     ],
 
+    preprocessors: {
+      "js/views/accounts.html": ["ng-html2js"]
+    },
+
+    ngHtml2JsPreprocessor: {
+        // If your build process changes the path to your templates,
+        // use stripPrefix and prependPrefix to adjust it.
+        stripPrefix: "HierarchyProject/js/views/.*/",
+        prependPrefix: "HierarchyProject/js/views/",
+
+        // the name of the Angular module to create
+        moduleName: "myMngtHierarchyApp"
+    },
+
     // web server port
     port: 8080,
 
