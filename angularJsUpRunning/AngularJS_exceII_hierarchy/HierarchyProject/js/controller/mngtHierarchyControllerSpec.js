@@ -202,12 +202,14 @@ describe('Controller: mngtHierarchyController', function() {
     it('should disable top navigation btn when getAssumeIdentityDialogBox is closed by user', function()
     {
     	mockMngtHierarchyProvider.selNodeSucceed = false;
+    	spyOn(mockLocation, 'path');
 
     	spyOn(mockMngtHierarchyProvider, 'displayAssumeDialogBox').and.callThrough();
 		ctrl.getAssumeIdentityDialogBox(true);
 
-		expect(ctrl.showPage).toBeFalsy();
+		expect(ctrl.showPage).toBeTruthy();
     	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
+    	expect(mockLocation.path).toHaveBeenCalledWith("/templateAssumeIdentity")
     	expect(ctrl.accountTitle).toEqual("");
     });
 
