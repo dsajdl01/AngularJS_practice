@@ -6,6 +6,8 @@ function modalDialogBoxService($modal){
 	 var self = this;
 
 	 self.modalData = {
+	 	backdrop: 'static',
+		size: 'md',
 	 	show: false
 	 };
 
