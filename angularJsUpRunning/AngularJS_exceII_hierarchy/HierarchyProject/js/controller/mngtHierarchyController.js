@@ -46,6 +46,8 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 				{
 					self.isTopNavigationBtnDisabled = selectedNodeName;
 					self.accountTitle = "";
+					selectedNodeName = true;
+					$location.path("/templateAssumeIdentity");
 				} else
 				{
 					self.isTopNavigationBtnDisabled = true;
