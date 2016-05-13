@@ -36,6 +36,7 @@ myMngtHierarchyApp.controller('formController', [ 'commonNodeHeirarchyModel', 'm
 			self.origineStartDay = self.startDay;
 			self.OriginePosition = self.position;
 			self.OriginComment = self.comment;
+			self.dateErrorMessage = false;
 		}
 
 		var areValuesSameAsOrigineValues = function()
