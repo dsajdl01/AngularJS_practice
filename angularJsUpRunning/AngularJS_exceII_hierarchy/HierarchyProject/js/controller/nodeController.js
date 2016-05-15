@@ -117,7 +117,7 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
 			if(self.commonNodeHeirarchyModel.editingNode.id == -1){
 				highestId ++;
 				if(newName){
-					var nodeDetails = {"id": highestId, "dob": "", "start": calculateTimeService.getCurrentDate() ,"possition": "Not defined","comments": "N/A"};
+					var nodeDetails = {"id": highestId, "dob": "", "start": calculateTimeService.getCurrentDate() ,"possition": "Not defined","comments": "N/A", "fullname": null, "email": null, "password": 12345678};
 					self.commonNodeHeirarchyModel.nodesDetails.push(nodeDetails);
 					self.commonNodeHeirarchyModel.editingNode.id = highestId;
 					self.commonNodeHeirarchyModel.editingNode.name = newName;
