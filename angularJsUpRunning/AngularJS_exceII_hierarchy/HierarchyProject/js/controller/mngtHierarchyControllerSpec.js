@@ -9,14 +9,17 @@ describe('Controller: mngtHierarchyController', function() {
 			"name": "Sandra",
 			"id": 100,
 			"parentsId": null,
+			"access": "admin",
 			"child": [{
 						"name": "Bob",
 						"id": 101,
 						"parentsId": 100,
+						"access": "viewer",
 						"child": [{
 								"name": "David",
 								"id": 106,
 								"parentsId": 105,
+								"access": "user",
 								"child": []
 							}]
 						}, 
@@ -24,6 +27,7 @@ describe('Controller: mngtHierarchyController', function() {
 						"name": "Fred",
 						"id": 102,
 						"parentsId": 100,
+						"access": "viewer",
 						"child": []
 					}]
 			}];
@@ -122,6 +126,7 @@ describe('Controller: mngtHierarchyController', function() {
     	expect(ctrl.showPage).toBeFalsy();
     	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
     	expect(ctrl.accountTitle).toBeUndefined;
+    	expect(ctrl.commonNodeHeirarchyModel.isUserAssumeIdentity).toBeFalsy();
 
     	spyOn(mockMngtHierarchyProvider, 'loadTopNode').and.callThrough();
     	spyOn(mockMngtHierarchyProvider, 'loadNodeDetails').and.callThrough();
@@ -132,6 +137,7 @@ describe('Controller: mngtHierarchyController', function() {
     	expect(ctrl.showPage).toBeTruthy();
     	expect(ctrl.isTopNavigationBtnDisabled).toBeTruthy();
     	expect(ctrl.accountTitle).toEqual("Profile of Sandra");
+    	expect(ctrl.hasPermission).toBeTruthy();
     });
 
     it('should load top hierarchy node when init() is called and get call assume identity box where top node is selected', function()
