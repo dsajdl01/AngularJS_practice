@@ -14,7 +14,7 @@
     float: left;
     margin: 5px 2px 10px 15px;
     padding: 0px 5px 15px 2px;
-    height: 450px;
+    height: 500px;
     width: 35%;
     overflow: auto;
 }
@@ -172,7 +172,7 @@ ul.nodeListName {
 	margin: 5px 30px 10px 5px;
 	padding: 1px 15px 15px 10px;
 	width: 57%;
-	height: 450px;
+	height: 500px;
 }
 
 .accoutInfoContent {
@@ -202,6 +202,11 @@ ul.nodeListName {
 /* form */
 .formText {
   margin-left: 23px;
+  margin-right: 30px;
+}
+.radio-btn {
+  padding-right: 25px;
+  margin-bottom: -10px;
 }
 .formContainer {
   margin: 10px 30px 0px 20px;
@@ -239,7 +244,6 @@ ul.nodeListName {
   box-shadow: 0px 0px 1px 1px #0082E2;
 
 }
-
 
 .glyphicon-asterisk:before {
   content: "\2a"; }
