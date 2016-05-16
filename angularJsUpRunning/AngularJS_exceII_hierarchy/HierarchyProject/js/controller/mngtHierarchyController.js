@@ -7,6 +7,7 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 	self.commonNodeHeirarchyModel = commonNodeHeirarchyModel;
 	self.accountTitle;
 	self.todayDay = calculateTimeService.getCurrentDate();
+	self.hasPermision = true;
 
 	self.init = function()
 	{
@@ -14,6 +15,7 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 		var isNodeLoaded = false;
 		self.showPage = false;
 		self.isTopNavigationBtnDisabled = false;
+		self.commonNodeHeirarchyModel.isUserAssumeIdentity = false;
 		relocatePageToHomePage();
 		mngtHierarchyNodeServiceProvider.loadTopNode(function(loadResponce){
 			isNodeLoaded = loadResponce;
@@ -52,6 +54,9 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 				{
 					self.isTopNavigationBtnDisabled = true;
 					self.accountTitle = "Profile of " + selectedNodeName;
+					self.commonNodeHeirarchyModel.isUserAssumeIdentity = true;
+					var access = self.commonNodeHeirarchyModel.selectedTopNode.access;
+					self.hasPermision = (access == "admin" || access == "viewer") ? true : false; 
 				}
 				isAssumeIdentity = !!selectedNodeName;
 				canPageBeDisplayed(isNodeLoaded, isAssumeIdentity);
@@ -61,6 +66,7 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 	self.loadPage = function()
 	{
 		self.showPage = false;
+		self.commonNodeHeirarchyModel.isUserAssumeIdentity = false;
 		self.getAssumeIdentityDialogBox(true);
 	};
 
