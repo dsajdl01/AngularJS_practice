@@ -10,4 +10,5 @@ function commonNodeHeirarchyModel(){
 	self.allNodesDetails =[];
 	self.userSelectedNode = {};
 	self.editingNode = {};
+	self.isUserAssumeIdentity = false;
 }
