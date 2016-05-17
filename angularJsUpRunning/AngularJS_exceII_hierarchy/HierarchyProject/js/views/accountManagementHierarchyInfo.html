@@ -72,9 +72,9 @@
 
 	                               	<form role="form" name="form" novalidate ng-submit="formCtrl.save()">
 	                               		<div class="form-group">
-	                               		 <label>
+	                               		 <label class="radio-btn">
 	                               			<input type="radio"
- 	                               				   class="form-control-helper"
+ 	                               				   class="form-control-helper-radioBtn"
 											       id="adminRdb"
 											       ng-model="formCtrl.access"
        											   value="admin"
@@ -83,9 +83,9 @@
        											   ng-change="formCtrl.makeChange()">
        									    Admin
        									</label>
-       									<label>
+       									<label class="radio-btn">
        										<input type="radio"
- 	                               				   class="form-control-helper"
+ 	                               				   class="form-control-helper-radioBtn"
 											       id="viewerRdb"
 											       ng-disabled="formCtrl.modified" 
 											       ng-model="formCtrl.access"
@@ -94,9 +94,9 @@
        											   ng-change="formCtrl.makeChange()">
        										Viewer
        									</label>
-       									<label>
+       									<label class="radio-btn">
        										<input type="radio"
- 	                               				   class="form-control-helper"
+ 	                               				   class="form-control-helper-radioBtn"
 											       id="userRdb"
 											       ng-disabled="formCtrl.modified" 
 											       ng-model="formCtrl.access"
