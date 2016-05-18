@@ -1,4 +1,4 @@
-qxx'use strict';
+'use strict';
 myMngtHierarchyApp.directive('dateValidation', ['$q',function($q) {
   return {
 	restrict: 'A',
