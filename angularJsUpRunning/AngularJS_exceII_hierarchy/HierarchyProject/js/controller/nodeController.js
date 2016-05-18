@@ -50,7 +50,7 @@ myMngtHierarchyApp.controller('nodeController',[ 'commonNodeHeirarchyModel','mng
         }
 
 		self.createNewChildNodeForUserToEdit = function(parent){
-			var newNode = {"name": "", "id": -1, "parentsId": parent.id, "child": [] };
+			var newNode = {"name": "", "id": -1, "parentsId": parent.id, "access": "user", "child": [] };
 			parent.child.push(newNode);
 		}
 
