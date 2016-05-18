@@ -56,7 +56,7 @@ myMngtHierarchyApp.controller( 'mngtHierarchyController', ['mngtHierarchyNodeSer
 					self.accountTitle = "Profile of " + selectedNodeName;
 					self.commonNodeHeirarchyModel.isUserAssumeIdentity = true;
 					var access = self.commonNodeHeirarchyModel.selectedTopNode.access;
-					self.hasPermision = (access == "admin" || access == "viewer") ? true : false; 
+					self.hasPermission = (access == "admin" || access == "viewer") ? true : false; 
 				}
 				isAssumeIdentity = !!selectedNodeName;
 				canPageBeDisplayed(isNodeLoaded, isAssumeIdentity);

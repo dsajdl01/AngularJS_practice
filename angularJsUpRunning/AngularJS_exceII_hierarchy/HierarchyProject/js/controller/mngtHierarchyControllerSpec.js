@@ -75,6 +75,7 @@ describe('Controller: mngtHierarchyController', function() {
 		mockCommonNodeHeirarchyModel = 
 		{
 			rootNode: node,
+			selectedTopNode: node[0],
 			allNodesDetails: []
 		};
 
@@ -127,6 +128,7 @@ describe('Controller: mngtHierarchyController', function() {
     	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
     	expect(ctrl.accountTitle).toBeUndefined;
     	expect(ctrl.commonNodeHeirarchyModel.isUserAssumeIdentity).toBeFalsy();
+    	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
 
     	spyOn(mockMngtHierarchyProvider, 'loadTopNode').and.callThrough();
     	spyOn(mockMngtHierarchyProvider, 'loadNodeDetails').and.callThrough();
@@ -135,6 +137,7 @@ describe('Controller: mngtHierarchyController', function() {
     	ctrl.init();
 
     	expect(ctrl.showPage).toBeTruthy();
+    	expect(ctrl.isTopNavigationBtnDisabled).toBeTruthy();
     	expect(ctrl.isTopNavigationBtnDisabled).toBeTruthy();
     	expect(ctrl.accountTitle).toEqual("Profile of Sandra");
     	expect(ctrl.hasPermission).toBeTruthy();
@@ -147,10 +150,12 @@ describe('Controller: mngtHierarchyController', function() {
     	mockMngtHierarchyProvider.selNodeSucceed = true;
     	mockMngtHierarchyProvider.loadSucceed = true;
     	mockMngtHierarchyProvider.detailsSuccesd = true;
+    	mockCommonNodeHeirarchyModel.selectedTopNode = node[0].child[0].child[0];
 
     	expect(ctrl.showPage).toBeFalsy();
     	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
-    	expect(ctrl.accountTitle).toBeUndefined
+    	expect(ctrl.accountTitle).toBeUndefined;
+    	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
 
     	spyOn(mockMngtHierarchyProvider, 'loadTopNode').and.callThrough();
     	spyOn(mockMngtHierarchyProvider, 'loadNodeDetails').and.callThrough();
@@ -160,7 +165,9 @@ describe('Controller: mngtHierarchyController', function() {
 
     	expect(ctrl.showPage).toBeTruthy();
     	expect(ctrl.isTopNavigationBtnDisabled).toBeTruthy();
+    	expect(ctrl.isTopNavigationBtnDisabled).toBeTruthy();
     	expect(ctrl.accountTitle).toEqual("Profile of David");
+    	expect(ctrl.hasPermission).toBeFalsy();
     });
 
     it('should pop up toaster message when loadTopNode() fail to load data', function()
@@ -174,6 +181,7 @@ describe('Controller: mngtHierarchyController', function() {
     	expect(ctrl.showPage).toBeFalsy();
     	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
     	expect(ctrl.accountTitle).toBeUndefined;
+    	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
 
     });
 
@@ -189,6 +197,7 @@ describe('Controller: mngtHierarchyController', function() {
     	expect(ctrl.showPage).toBeFalsy();
     	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
     	expect(ctrl.accountTitle).toBeUndefined;
+    	expect(ctrl.isTopNavigationBtnDisabled).toBeFalsy();
     });
 
     it('should assume identity as bob when getAssumeIdentityDialogBox is displayed and user select bob', function()
@@ -196,6 +205,7 @@ describe('Controller: mngtHierarchyController', function() {
     	mockMngtHierarchyProvider.selNodeSucceed = true;
 		mockMngtHierarchyProvider.isSubNode = true;
 		mockMngtHierarchyProvider.isFirstNaneSelected = true;
+		mockCommonNodeHeirarchyModel.selectedTopNode = node[0].child[0];
 
 		spyOn(mockMngtHierarchyProvider, 'displayAssumeDialogBox').and.callThrough();
 		ctrl.getAssumeIdentityDialogBox(true);
@@ -203,6 +213,8 @@ describe('Controller: mngtHierarchyController', function() {
 		expect(ctrl.showPage).toBeTruthy();
     	expect(ctrl.isTopNavigationBtnDisabled).toBeTruthy();
     	expect(ctrl.accountTitle).toEqual("Profile of Bob");
+    	expect(ctrl.isTopNavigationBtnDisabled).toBeTruthy();
+    	expect(ctrl.hasPermission).toBeTruthy();
     });
 
     it('should disable top navigation btn when getAssumeIdentityDialogBox is closed by user', function()
@@ -224,6 +236,7 @@ describe('Controller: mngtHierarchyController', function() {
     	mockMngtHierarchyProvider.selNodeSucceed = true;
 		mockMngtHierarchyProvider.isSubNode = true;
 		mockMngtHierarchyProvider.isFirstNaneSelected = false;
+		mockCommonNodeHeirarchyModel.selectedTopNode = node[0].child[1];
 
 		spyOn(mockMngtHierarchyProvider, 'displayAssumeDialogBox').and.callThrough();
 		ctrl.loadPage();
@@ -231,6 +244,8 @@ describe('Controller: mngtHierarchyController', function() {
 		expect(ctrl.showPage).toBeTruthy();
     	expect(ctrl.isTopNavigationBtnDisabled).toBeTruthy();
     	expect(ctrl.accountTitle).toEqual("Profile of Fred");
+    	expect(ctrl.isTopNavigationBtnDisabled).toBeTruthy();
+    	expect(ctrl.hasPermission).toBeTruthy();
     });
 
     it('should call display about dialog box when displayAboutDialog is called', function()
