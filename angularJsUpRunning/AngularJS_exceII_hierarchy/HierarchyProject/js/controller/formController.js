@@ -19,7 +19,9 @@ myMngtHierarchyApp.controller('formController', [ 'commonNodeHeirarchyModel', 'm
 		var initializeViewVariables = function(nodeDetails)
 		{
 			self.btnSave = true;
-			self.btnName = "Save"
+			self.btnName = "Save";
+			self.modified = (self.commonNodeHeirarchyModel.selectedTopNode.access == "admin") ? false : true;
+			self.access = self.commonNodeHeirarchyModel.userSelectedNode.access;
 			self.startDay = nodeDetails.start;
 			self.position = nodeDetails.possition;
 			self.comment = nodeDetails.comments;
@@ -37,11 +39,12 @@ myMngtHierarchyApp.controller('formController', [ 'commonNodeHeirarchyModel', 'm
 			self.OriginePosition = self.position;
 			self.OriginComment = self.comment;
 			self.dateErrorMessage = false;
+			self.originAccess = self.access;
 		}
 
 		var areValuesSameAsOrigineValues = function()
 		{
-			return self.startDay == self.origineStartDay && self.position == self.OriginePosition &&  self.comment == self.OriginComment;
+			return self.startDay == self.origineStartDay && self.position == self.OriginePosition &&  self.comment == self.OriginComment && self.access == self.originAccess;
 		}
 
 		self.save = function()
@@ -55,6 +58,7 @@ myMngtHierarchyApp.controller('formController', [ 'commonNodeHeirarchyModel', 'm
 					commonNodeHeirarchyModel.nodesDetails[i].start = self.startDay;
 					commonNodeHeirarchyModel.nodesDetails[i].possition = self.position;
 					commonNodeHeirarchyModel.nodesDetails[i].comments = self.comment;
+					self.commonNodeHeirarchyModel.userSelectedNode.access = self.access;
 					seveOrigineValues();
 					toaster.pop("success","The data was successfully saved.");
 				}
